@@ -25,7 +25,7 @@ import styles from "./styles";
 
 import TabCalendar from './tabCalendar';
 
-import getTheme from '../../../native-base-theme/components';
+import getTheme from '../../../theme/components';
 
 class CalendarWFooter extends Component {
   constructor(props) {
