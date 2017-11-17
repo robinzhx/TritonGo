@@ -18,47 +18,47 @@ import {
 
 import styles from "./styles";
 
-const pratik = require("../../../img/contacts/pratik.png");
-const sanket = require("../../../img/contacts/sanket.png");
-const megha = require("../../../img/contacts/megha.png");
-const atul = require("../../../img/contacts/atul.png");
-const saurabh = require("../../../img/contacts/saurabh.png");
-const varun = require("../../../img/contacts/varun.png");
+const img1 = require("../../../img/contacts/1.jpg");
+const img2 = require("../../../img/contacts/2.jpg");
+const img3 = require("../../../img/contacts/3.jpg");
+const img4 = require("../../../img/contacts/4.jpg");
+const img5 = require("../../../img/contacts/5.jpg");
+const img6 = require("../../../img/contacts/6.jpg");
 
 const datas = [
   {
-    img: pratik,
-    text: "Kumar Pratik",
+    img: img1,
+    text: "1",
     note: "Its time to build a difference . .",
     time: "3:43 pm"
   },
   {
-    img: sanket,
-    text: "Kumar Sanket",
+    img: img2,
+    text: "2",
     note: "One needs courage to be happy and smiling all time . . ",
     time: "1:12 pm"
   },
   {
-    img: megha,
-    text: "Megha",
+    img: img3,
+    text: "3",
     note: "Live a life style that matchs your vision",
     time: "10:03 am"
   },
   {
-    img: atul,
-    text: "Atul Ranjan",
+    img: img4,
+    text: "4",
     note: "Failure is temporary, giving up makes it permanent",
     time: "5:47 am"
   },
   {
-    img: saurabh,
-    text: "Saurabh Sahu",
+    img: img5,
+    text: "5",
     note: "The biggest risk is a missed opportunity !!",
     time: "11:11 pm"
   },
   {
-    img: varun,
-    text: "Varun Sahu",
+    img: img6,
+    text: "6",
     note: "Wish I had a Time machine . .",
     time: "8:54 pm"
   }
