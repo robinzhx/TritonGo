@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, View, StatusBar } from "react-native";
+import { Image, View, StatusBar, KeyboardAvoidingView } from "react-native";
 
 import { 
   Container, 
@@ -20,6 +20,8 @@ import {
 
 import styles from "./styles";
 
+import LoginBtn from './LoginBtn';
+
 const launchscreenBg = require("../../../img/launchscreen-bg.png");
 const launchscreenLogo = require("../../../img/logo-tritongo.png");
 
@@ -31,40 +33,46 @@ class Home extends Component {
 			<Container>
 				<StatusBar barStyle="light-content" />
 				<Image source={launchscreenBg} style={styles.imageContainer}>
-					<View style={styles.logoContainer}>
-						<Image source={launchscreenLogo} style={styles.logo} />
-					</View>
-                  
-                    <Content style={{marginTop: 60}} >
-                      <Form style={{marginRight: 10}}>
-                        <Item floatingLabel>
-                          <Icon active name="person" style={{ color: "#fff"}} />
-                          <Label style={{color: '#fff', marginHorizontal: 10 }}>Username</Label>
-                          <Input style={{color: '#fff', marginHorizontal: 10 }} />
-                        </Item>
-                        
-                        <Item floatingLabel>
-                          <Icon active name="lock" style={{ color: "#fff" }} />
-                          <Label style={{color: '#fff', marginLeft: 10}}>Password</Label>
-                          <Input style={{color: '#fff', marginLeft: 10}} secureTextEntry ref={'passwordInput'}/>
-                        </Item>
-                      </Form>
-                      <Button transparent small
-                        style={{ opacity:0.6, alignSelf: 'flex-end' }}
-                      >
-                        <Text style={{color: '#fff'}}>Forget?</Text>
-                        <Icon active name="refresh" style={{ color: "#fff" }} />
-                      </Button>
-                    </Content>
+                    <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+                      <View style={styles.logoContainer}>
+                          <Image source={launchscreenLogo} style={styles.logo} />
+                      </View>
 
+                      <Content style={{marginTop: 110}} >
+
+                        <Form style={{marginRight: 10}}>
+                          <Item floatingLabel>
+                            <Icon active name="person" style={{ color: "#fff"}} />
+                            <Label style={{color: '#fff', marginHorizontal: 10 }}>Username</Label>
+                            <Input style={{color: '#fff', marginHorizontal: 10 }} 
+                              blurOnSubmit={true} autoCorrect={false} autoCapitalize={"none"}
+                            />
+                          </Item>
+                          <Item floatingLabel>
+                            <Icon active name="lock" style={{ color: "#fff" }} />
+                            <Label style={{color: '#fff', marginLeft: 10}}>Password</Label>
+                            <Input style={{color: '#fff', marginLeft: 10}} secureTextEntry
+                              blurOnSubmit = {true}
+                            />
+                          </Item>
+                        </Form>
+                        <Button transparent small
+                          style={{ opacity:0.6, alignSelf: 'flex-end' }}
+                        >
+                          <Text style={{color: '#fff'}}>Forget?</Text>
+                          <Icon active name="refresh" style={{ color: "#fff" }} />
+                        </Button>
+                      </Content>
+                    </KeyboardAvoidingView>
 					<View style={{ marginBottom: 20 }}>
-						<Button rounded 
-							style={{margin: 20, justifyContent: 'center', alignSelf: 'stretch'}}
-                            //onPress={() => this.props.navigation.navigate("./")}
-							onPress={() => this.props.navigation.navigate("CalendarWFooter")}
-						>
-							<Text>Sign In</Text>
-						</Button>
+                      <View style={{marginBottom: 60, marginTop: 20}}><LoginBtn action={() => this.props.navigation.navigate("CalendarWFooter")}/></View>
+                      {/*<Button rounded 
+                          style={{margin: 20, justifyContent: 'center', alignSelf: 'stretch'}}
+                          //onPress={() => this.props.navigation.navigate("./")}
+                          onPress={() => this.props.navigation.navigate("CalendarWFooter")}
+                      >
+                          <Text>Sign In</Text>
+                      </Button>*/}
                       <Button transparent small
                             style={{ alignSelf: "center" }}
                         >
