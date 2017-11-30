@@ -6,7 +6,10 @@ import { Platform } from "react-native";
 import { Root } from "native-base";
 import { StackNavigator } from "react-navigation";
 
-import CalendarWFooter from "./components/calendar/";
+import CalendarWFooter from "./components/mainpage/";
+import Profile from "./components/Profile/"; 
+import Home from "./components/home/";
+import SignUpPage from "./components/home/signuppage";
 
 import Drawer from "./Drawer";
 import Header from "./components/Header/";
@@ -93,6 +96,10 @@ const AppNavigator = StackNavigator(
         Header6: { screen: Header6 },
         Header7: { screen: Header7 },
         Header8: { screen: Header8 },
+      
+        CalendarWFooter: { screen: CalendarWFooter },
+        Home: { screen: Home },
+        Profile: { screen: Profile},
 
         BasicFooter: { screen: BasicFooter },
         IconFooter: { screen: IconFooter },

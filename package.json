@@ -1,6 +1,6 @@
 {
-	"name": "NativebaseKitchenSink",
-	"version": "2.3.1",
+	"name": "TritonGo",
+	"version": "0.0.5",
 	"private": true,
 	"devDependencies": {
 		"flow-bin": "^0.47.0",
@@ -22,11 +22,14 @@
 	},
 	"dependencies": {
 		"color": "~1.0.3",
+		"firebase": "^4.6.2",
 		"lodash": "^4.13.1",
 		"native-base": "2.3.1",
 		"react": "16.0.0-alpha.13",
 		"react-native": "0.46.4",
 		"react-native-calendars": "^1.11.0",
+		"react-native-maps": "^0.17.1",
+		"react-native-use-external-maps": "^1.0.0",
 		"react-navigation": "1.0.0-beta.11"
 	}
 }

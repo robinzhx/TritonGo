@@ -26,10 +26,16 @@ const drawerImage = require("../../../img/logo-tritongo.png");
 
 const datas = [
 	{
-		name: "My Calendar",
+		name: "Calendar",
 		route: "CalendarWFooter",
 		icon: "clipboard",
 		bg: "#C5F442",
+	},
+    {
+		name: "My Profile",
+		route: "Profile",
+		icon: "person",
+		bg: "#EF6092",
 	},
 // 	{
 // 		name: "Anatomy",

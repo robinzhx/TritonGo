@@ -3,7 +3,8 @@
 import React from "react";
 import { DrawerNavigator } from "react-navigation";
 
-import CalendarWFooter from "./components/calendar/"; 
+import CalendarWFooter from "./components/mainpage/"; 
+import Profile from "./components/Profile/";
 
 import Home from "./components/home/";
 import Header from "./components/Header/";
@@ -40,8 +41,13 @@ import Actionsheet from "./components/actionsheet";
 
 const DrawerExample = DrawerNavigator(
   {
-    Home: { screen: Home },
+    Home: { screen: Home, 
+          navigationOptions: ({navigation}) => ({
+          drawerLockMode: 'locked-closed'})
+    },
     CalendarWFooter: { screen: CalendarWFooter},
+    Profile: { screen: Profile},
+    
     Anatomy: { screen: Anatomy },
     Header: { screen: Header },
     Footer: { screen: Footer },

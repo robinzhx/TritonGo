@@ -6,9 +6,12 @@ import getTheme from "../native-base-theme/components";
 import material from "../native-base-theme/variables/material";
 import platform from "../native-base-theme/variables/platform";
 
-import CalendarWFooter from "./components/calendar/"; 
+import CalendarWFooter from "./components/mainpage/"; 
+import Profile from "./components/Profile/"; 
 
 import Home from "./components/home/";
+import SignUpPage from "./components/home/login";
+
 import Header from "./components/Header/";
 import Header1 from "./components/Header/1";
 import Header2 from "./components/Header/2";
