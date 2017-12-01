@@ -13,7 +13,8 @@ import {
   H3, 
   Text, 
   Header, 
-  Title, 
+  Title,
+  Toast,
   Body, 
   Left, 
   Right } from "native-base";
@@ -25,11 +26,10 @@ import LoginBtn from './LoginBtn';
 const launchscreenBg = require("../../../img/launchscreen-bg.png");
 const launchscreenLogo = require("../../../img/logo-tritongo.png");
 
-const firebaseApp = require('../../firebase').firebaseApp;
 
 class Home extends Component {
 	// eslint-disable-line
-     constructor(props){
+    constructor(props){
       super(props);
 
       this.state = {
@@ -37,19 +37,6 @@ class Home extends Component {
         password: '',
       }
     }
-  
-    login(){
-      firebaseApp.auth().signInWithEmailAndPassword(this.state.email, this.state.password
-      ).then((userData) =>
-        {
-          this.props.navigation.navigate("CalendarWFooter");
-         alert('Login Successfully!');
-        }
-      ).catch((error) =>
-       {
-        alert('Login Failed. Please try again'+error);
-      });
-     }
   
 	render() {
 		return (
@@ -91,7 +78,10 @@ class Home extends Component {
                       </Content>
                     </KeyboardAvoidingView>
 					<View style={{ marginBottom: 20 }}>
-                      <View style={{marginBottom: 60, marginTop: 20}}><LoginBtn action={() => this.login()}/></View>
+                      <View style={{marginBottom: 60, marginTop: 20}}>
+                        <LoginBtn password = {this.state.password} email = {this.state.email} 
+                          action={() => this.props.navigation.navigate("CalendarWFooter")} />
+                      </View>
                       {/*<Button rounded 
                           style={{margin: 20, justifyContent: 'center', alignSelf: 'stretch'}}
                           //onPress={() => this.props.navigation.navigate("./")}

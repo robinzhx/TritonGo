@@ -43,9 +43,24 @@ class CalendarWFooter extends Component {
       tab1: false,
       tab2: true,
       tab3: false,
+      content:'',
+      arr: [],
+      numEvent: 0,
+      numDaily: 0
     };
+    this.allEvents()
   }
 
+  allEvents(){
+    firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).once('value', (snap) => {
+      var items = []
+      snap.forEach((child) => {
+        items.push(child.val().eventId);
+      });
+      this.setState({numEvent: items.length, numDaily: items.length})
+    });
+  }
+  
   toggleTab(i) {
     this.setState({
       tab1: (i===0 ? true: false),
@@ -106,44 +121,64 @@ class CalendarWFooter extends Component {
             <Button transparent><Icon style={{ color: "#FFF" }} name="more" /></Button>
           </Right>
         </Header>
-
+        
         <Tabs onChangeTab={({ i })=> this.toggleTab(i)} initialPage={1} ref={(tabView) => {this.tabView = tabView}} tabBarUnderlineStyle={{backgroundColor:"#FFF"}}>
             <Tab heading={ <TabHeading />}>
               <TabDaily />
             </Tab>
             <Tab heading={ <TabHeading />}>
-              <TabCalendar />
+              <TabCalendar eventNames= {this.state.arr}/>
             </Tab>
             <Tab heading={ <TabHeading />}>
-                <TabMap />
+              <TabMap />
             </Tab>
         </Tabs>
 
         
         <Footer>
           <FooterTab>
-            <Button 
-              active={this.state.tab1} 
-              onPress={() => this.tabView.goToPage(0)}
-              vertical
-              badge
-            >
-              <Badge style={{ backgroundColor: "green" }}>
-                <Text>3</Text>
-              </Badge>
-              <Icon active={this.state.tab1} name="happy" />
-              <Text>Daily</Text>
-            </Button>
-            <Button
-              active={this.state.tab2}
-              onPress={() => this.tabView.goToPage(1)}
-              vertical
-              badge
-            >
-              <Badge><Text>2</Text></Badge>
-              <Icon active={this.state.tab2} name="clipboard" />
-              <Text>Schedule</Text>
-            </Button>
+            {(this.state.numDaily != 0) ?
+              <Button 
+                active={this.state.tab1} 
+                onPress={() => this.tabView.goToPage(0)}
+                vertical
+                badge
+              >
+                <Badge style={{ backgroundColor: "green" }}>
+                  <Text>{this.state.numDaily}</Text>
+                </Badge>
+                <Icon active={this.state.tab1} name="happy" />
+                <Text>Daily</Text>
+              </Button>
+              :
+              <Button 
+                active={this.state.tab1} 
+                onPress={() => this.tabView.goToPage(0)}
+              >
+                <Icon active={this.state.tab1} name="happy" />
+                <Text>Daily</Text>
+              </Button>
+            }
+            {(this.state.numEvent != 0) ? 
+              <Button
+                active={this.state.tab2}
+                onPress={() => this.tabView.goToPage(1)}
+                vertical
+                badge
+              >
+                <Badge><Text>{this.state.numEvent}</Text></Badge>
+                <Icon active={this.state.tab2} name="clipboard" />
+                <Text>Schedule</Text>
+              </Button>
+              :
+              <Button
+                active={this.state.tab2}
+                onPress={() => this.tabView.goToPage(1)}
+              >
+                <Icon active={this.state.tab2} name="clipboard" />
+                <Text>Schedule</Text>
+              </Button>
+            }
             <Button
               active={this.state.tab3}
               onPress={() => this.tabView.goToPage(2)}

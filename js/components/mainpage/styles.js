@@ -24,6 +24,11 @@ export default {
   emptyDate: {
     height: 15,
     flex:1,
-    paddingTop: 30
+    paddingTop: 30,
+    marginTop: 50,
+    marginRight: 10,
+    borderTopColor: 'grey',
+    borderTopWidth: 1,
+    opacity: 0.1
   }
 };

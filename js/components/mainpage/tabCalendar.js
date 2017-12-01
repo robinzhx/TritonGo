@@ -14,8 +14,11 @@ class TabCalendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: {}
+      items: {},
+      content:'',
+      arr: []
     };
+    this.allEvents();
   }
 
   render() {
@@ -44,42 +47,82 @@ class TabCalendar extends Component {
       );
   }
   
+  allEvents(){
+    firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).once('value', (snap) => {
+      var items = []
+      snap.forEach((child) => {
+        items.push(child.val().eventId);
+      });
+      var s = this.state.content
+      this.setState({numEvent: items.length})
+      for (var j = 0; j < items.length; j++) {
+        var ref = firebaseApp.database().ref('events/' + items[j]);
+        ref.once('value').then((snapshot) => {
+          var array = this.state.arr
+          array.push(snapshot.val())
+          this.setState({arr: array})
+        });
+      }
+      var array = this.state.arr
+      array.sort(function(a,b) {
+      if (a['Time'] < b['Time'])
+        return -1
+      else if (a['Time'] > b['Time'])
+        return 1
+      return 0
+      });
+      for (var i = 0; i < array.length; i++) {
+        for (var j in array[i]) {
+          s += j + " : " + array[i][j] + "\n"
+        }
+      }
+      this.setState({content:s, arr:array})
+    });
+  }
+  
   loadItems(day) {
+    if (!day) return;
     setTimeout(() => {
+      // init the list of events
       for (let i = -15; i < 85; i++) {
         const time = day.timestamp + i * 24 * 60 * 60 * 1000;
-        const eventName = ["CSE 12, Gary Gillespie, Pepper Canyon Hall", "CSE 110, Gary Gillespie, Warren Lecture Hall", "CSE 15L, Gary Gillespie, Center Hall", "Quiz Time :( ", "VIS 142, VAF 228", "Party Time!!!"];
+        //const eventName = ["CSE 12, Gary Gillespie, Pepper Canyon Hall", "CSE 110, Gary Gillespie, Warren Lecture Hall", "CSE 15L, Gary Gillespie, Center Hall", "Quiz Time :( ", "VIS 142, VAF 228", "Party Time!!!"];
         const strTime = this.timeToString(time);
         if (!this.state.items[strTime]) {
           this.state.items[strTime] = [];
-          const numItems = Math.floor(Math.random() * 6);
+          /*const numItems = Math.floor(Math.random() * 6);
           for (let j = 0; j < numItems; j++) {
-            this.state.items[strTime].push({
-              name: eventName[Math.floor(Math.random() * 5)],
-              height: Math.max(50, Math.floor(Math.random() * 100))
-            });
-          }
+          }*/
         }
       }
+      for (var j = 0; j < this.state.arr.length; j++) {
+        const eventTime = this.state.arr[j]['Time'];
+        this.state.items[eventTime] = [];
+        this.state.items[eventTime].push({
+          name: this.state.arr[j]['Description'],
+          height: Math.max(50, Math.floor(Math.random() * 100))
+        });
+      }
+      
       //console.log(this.state.items);
       const newItems = {};
       Object.keys(this.state.items).forEach(key => {newItems[key] = this.state.items[key];});
       this.setState({
         items: newItems
       });
-    }, 1000);
+    }, 1500);
     // console.log(`Load Items for ${day.year}-${day.month}`);
   }
 
   renderItem(item) {
     return (
-      <View style={[styles.item, {height: item.height}]}><Text>{item.name}</Text></View>
+      <View style={styles.item}><Text>{item.name}</Text></View>
     );
   }
 
   renderEmptyDate() {
     return (
-      <View style={styles.emptyDate}><Text>No event at this date!</Text></View>
+      <View style={styles.emptyDate} />
     );
   }
 

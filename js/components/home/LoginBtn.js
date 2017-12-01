@@ -8,8 +8,10 @@ import {
 	Easing,
 	Image,
 	Alert,
-	View,
+	View
 } from 'react-native';
+
+import {Toast} from 'native-base'
 
 import spinner from '../../../img/loading.gif';
 
@@ -19,18 +21,36 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
 
+const firebaseApp = require('../../firebase').firebaseApp;
+
 class LoginBtn extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			isLoading: false,
+            successLogin: false
 		};
 
 		this.buttonAnimated = new Animated.Value(0);
 		this.growAnimated = new Animated.Value(0);
 		this._onPress = this._onPress.bind(this);
 	}
+  
+    login(){
+      firebaseApp.auth().signInWithEmailAndPassword(this.props.email, this.props.password
+      ).then((userData) =>
+        {
+          Toast.show({text: "Login Successfully!", type: 'success',buttonText: "Nice", duration: 1500})
+          this.state.successLogin = true
+        }
+      ).catch((error) =>
+        {
+          Toast.show({text: "Login Failed. Please Try again. " + error, buttonText: "Okay", duration: 3000})
+          this.state.successLogin = false
+        }
+      );
+    }
 
 	_onPress() {
 		if (this.state.isLoading) return;
@@ -44,17 +64,26 @@ class LoginBtn extends Component {
 				easing: Easing.linear
 			}
 		).start();
-
-		setTimeout(() => {
-			this._onGrow();
-		}, 1000);
-
-		setTimeout(() => {
-			this.setState({ isLoading: false });
-			this.buttonAnimated.setValue(0);
-			this.growAnimated.setValue(0);
-            this.props.action();
-		}, 1300);
+        
+        this.login();
+      
+        setTimeout(() => {
+            if ( this.state.successLogin ) {
+                this._onGrow();
+            }
+        }, 2000);
+      
+        setTimeout(() => {
+            this.setState({ isLoading: false });
+            this.buttonAnimated.setValue(0);
+            this.growAnimated.setValue(0);
+            if (this.state.successLogin) {
+                this.props.action();
+            }
+        }, 2700);
+      
+        
+        
 	}
 
 	_onGrow() {

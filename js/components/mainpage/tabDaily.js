@@ -12,7 +12,8 @@ import {
   Thumbnail,
   Body,
   Button,
-  Icon
+  Icon,
+  Spinner
 } from 'native-base';
 
 import styles from "./styles";
@@ -26,6 +27,8 @@ const event3 = require("../../../img/event/event3.jpg");
 
 const deviceWidth = Dimensions.get("window").width;
 
+const firebaseApp = require('../../firebase').firebaseApp;
+
 class TabDaily extends Component {
 
   static propTypes = {}
@@ -34,155 +37,215 @@ class TabDaily extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      content:'',
+      arr: [],
+      isLoading: true
+    }
   }
 
+//   allEvents(){
+//     firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).once('value', (snap) => {
+//       var items = []
+//       snap.forEach((child) => {
+//         items.push(child.val().eventId);
+//       });
+//       var s = this.state.content
+//       s = s + "There are " + items.length + " events!\n"
+//       this.setState({content : s})
+//       for (var j = 0; j < items.length; j++) {
+//         var ref = firebaseApp.database().ref('events/' + items[j]);
+//         ref.once('value').then((snapshot) => {
+//           var array = this.state.arr
+//           array.push(snapshot.val())
+//           this.setState({arr: array})
+//         });
+//       }
+//     });
+//   }
+  
+  display() {
+    var s = this.state.content
+    var array = this.state.arr
+    array.sort(function(a,b) {
+      if (a['Time'] < b['Time'])
+        return -1
+      else if (a['Time'] > b['Time'])
+        return 1
+      return 0
+    });
+    for (var i = 0; i < array.length; i++) {
+      for (var j in array[i]) {
+        s += j + " : " + array[i][j] + "\n"
+      }
+    }
+    this.setState({content:s, arr: array})
+  }
+  
+  loadPublic(){
+    firebaseApp.database().ref().child('events').once('value', (snap) => {
+      snap.forEach((child) => {
+        var items = this.state.arr
+        items.push(child.val());
+        this.setState({arr: items})
+      });
+    });
+ }
+  
+  componentDidMount() {
+      this.loadPublic()
+      
+      setTimeout(() => {
+        this.display();
+        this.setState({ isLoading: false });
+      }, 900);
+  }
+  
   render() {
-    return (
-      <Content padder>
-                
-        <Card style={styles.mb}>
-          <CardItem bordered>
-            <Left>
-              <Thumbnail source={event1logo} />
+    
+      return (
+        this.state.isLoading ?
+        <Spinner color="grey" style={{ margin: 20 }}/>
+        :
+        <Content padder>
+          <Card style={styles.mb}>
+            <CardItem bordered>
+              <Left>
+                <Thumbnail source={event1logo} />
+                <Body>
+                  <Text>{this.state.arr[0]['Description']}</Text>
+                  <Text note>{this.state.arr[0]['Time']}</Text>
+                </Body>
+              </Left>
+            </CardItem>
+
+            <CardItem>
               <Body>
-                <Text>Fools' Day Celebration</Text>
-                <Text note>April 1, 2017</Text>
+                <Image
+                  style={{
+                    alignSelf: "center",
+                    height: 150,
+                    resizeMode: "cover",
+                    width: deviceWidth / 1.18,
+                    marginVertical: 5
+                  }}
+                  source={event1}
+                />
+                <Text>
+                  {this.state.content}
+                </Text>
               </Body>
-            </Left>
-          </CardItem>
+            </CardItem>
+            <CardItem style={{ paddingVertical: 0 }}>
+              <Left>
+                <Button transparent>
+                  <Icon name="logo-facebook" />
+                  <Text> See Detail</Text>
+                </Button>
+              </Left>
+              <Right>
+                <Button transparent
+                  onPress={()=> this.display()}>
+                  <Text>Add to Calendar </Text>
+                  <Icon active name="play" />
+                </Button>
+              </Right>
+            </CardItem>
+          </Card>
+          <Card style={styles.mb}>
+            <CardItem bordered>
+              <Left>
+                <Thumbnail source={event2logo} />
+                <Body>
+                  <Text>VR Club GBM #2</Text>
+                  <Text note>Nov 21, 2017</Text>
+                </Body>
+              </Left>
+            </CardItem>
 
-          <CardItem>
-            <Body>
-              <Image
-                style={{
-                  alignSelf: "center",
-                  height: 150,
-                  resizeMode: "cover",
-                  width: deviceWidth / 1.18,
-                  marginVertical: 5
-                }}
-                source={event1}
-              />
-              <Text>
-                April Fools' Day (sometimes called All Fools' Day) is celebrated 
-                every year on April 1 by playing practical jokes and spreading 
-                oaxes. The jokes and their victims are called April fools. People 
-                playing April Fool jokes expose their prank by shouting April Fool.
-              </Text>
-            </Body>
-          </CardItem>
-          <CardItem style={{ paddingVertical: 0 }}>
-            <Left>
-              <Button transparent>
-                <Icon name="logo-facebook" />
-                <Text> See Detail</Text>
-              </Button>
-            </Left>
-            <Right>
-              <Button transparent>
-                <Text>Add to Calendar </Text>
-                <Icon active name="play" />
-              </Button>
-            </Right>
-          </CardItem>
-        </Card>
-
-        <Card style={styles.mb}>
-          <CardItem bordered>
-            <Left>
-              <Thumbnail source={event2logo} />
+            <CardItem>
               <Body>
-                <Text>VR Club GBM #2</Text>
-                <Text note>Nov 21, 2017</Text>
+                <Image
+                  style={{
+                    alignSelf: "center",
+                    height: 150,
+                    resizeMode: "cover",
+                    width: deviceWidth / 1.18,
+                    marginVertical: 5
+                  }}
+                  source={event2}
+                />
+                <Text>
+                  The Virtual Reality Club at UCSD is a student organization at UC San 
+                  Diego that connects members with the VR industry through workshops, 
+                  projects, and networks. Our mission is to foster a multidisciplinary 
+                  community dedicated to exploring and creating Virtual and Augmented 
+                  Reality experiences.
+                </Text>
               </Body>
-            </Left>
-          </CardItem>
+            </CardItem>
+            <CardItem style={{ paddingVertical: 0 }}>
+              <Left>
+                <Button transparent>
+                  <Icon name="logo-facebook" />
+                  <Text> See Detail</Text>
+                </Button>
+              </Left>
+              <Right>
+                <Button transparent>
+                  <Text>Add to Calendar </Text>
+                  <Icon active name="play" />
+                </Button>
+              </Right>
+            </CardItem>
+          </Card>
 
-          <CardItem>
-            <Body>
-              <Image
-                style={{
-                  alignSelf: "center",
-                  height: 150,
-                  resizeMode: "cover",
-                  width: deviceWidth / 1.18,
-                  marginVertical: 5
-                }}
-                source={event2}
-              />
-              <Text>
-                The Virtual Reality Club at UCSD is a student organization at UC San 
-                Diego that connects members with the VR industry through workshops, 
-                projects, and networks. Our mission is to foster a multidisciplinary 
-                community dedicated to exploring and creating Virtual and Augmented 
-                Reality experiences.
-              </Text>
-            </Body>
-          </CardItem>
-          <CardItem style={{ paddingVertical: 0 }}>
-            <Left>
-              <Button transparent>
-                <Icon name="logo-facebook" />
-                <Text> See Detail</Text>
-              </Button>
-            </Left>
-            <Right>
-              <Button transparent>
-                <Text>Add to Calendar </Text>
-                <Icon active name="play" />
-              </Button>
-            </Right>
-          </CardItem>
-        </Card>
+          <Card style={styles.mb}>
+            <CardItem bordered>
+              <Left>
+                <Thumbnail source={event3logo} />
+                <Body>
+                  <Text>TritonGo Demo Day!</Text>
+                  <Text note>Dec 23, 2017</Text>
+                </Body>
+              </Left>
+            </CardItem>
 
-        <Card style={styles.mb}>
-          <CardItem bordered>
-            <Left>
-              <Thumbnail source={event3logo} />
+            <CardItem>
               <Body>
-                <Text>TritonGo Demo Day!</Text>
-                <Text note>Dec 23, 2017</Text>
+                <Image
+                  style={{
+                    alignSelf: "center",
+                    height: 150,
+                    resizeMode: "cover",
+                    width: deviceWidth / 1.18,
+                    marginVertical: 5
+                  }}
+                  source={event3}
+                />
+                <Text>
+                  What is TritonGo? Bring the question and come over out demo event!
+                  Be prepare for amazed by our great application!
+                </Text>
               </Body>
-            </Left>
-          </CardItem>
-
-          <CardItem>
-            <Body>
-              <Image
-                style={{
-                  alignSelf: "center",
-                  height: 150,
-                  resizeMode: "cover",
-                  width: deviceWidth / 1.18,
-                  marginVertical: 5
-                }}
-                source={event3}
-              />
-              <Text>
-                What is TritonGo? Bring the question and come over out demo event!
-                Be prepare for amazed by our great application!
-              </Text>
-            </Body>
-          </CardItem>
-          <CardItem style={{ paddingVertical: 0 }}>
-            <Left>
-              <Button transparent>
-                <Icon name="logo-facebook" />
-                <Text> See Detail</Text>
-              </Button>
-            </Left>
-            <Right>
-              <Button transparent>
-                <Text>Add to Calendar </Text>
-                <Icon active name="play" />
-              </Button>
-            </Right>
-          </CardItem>
-        </Card>
-
-      </Content>
-    )
+            </CardItem>
+            <CardItem style={{ paddingVertical: 0 }}>
+              <Left>
+                <Button transparent>
+                  <Icon name="logo-facebook" />
+                  <Text> See Detail</Text>
+                </Button>
+              </Left>
+              <Right>
+                <Button transparent>
+                  <Text>Add to Calendar </Text>
+                  <Icon active name="play" />
+                </Button>
+              </Right>
+            </CardItem>
+          </Card>
+        </Content>
+      )
   }
 }
 

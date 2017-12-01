@@ -30,6 +30,6 @@
 		"react-native-calendars": "^1.11.0",
 		"react-native-maps": "^0.17.1",
 		"react-native-use-external-maps": "^1.0.0",
-		"react-navigation": "1.0.0-beta.11"
+		"react-navigation": "^1.0.0-beta.13"
 	}
 }
