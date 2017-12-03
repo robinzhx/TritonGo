@@ -13,10 +13,7 @@ import ForgetPage from "./components/home/forgetpage";
 
 import CalendarWFooter from "./components/mainpage/"; 
 import EventCreate from "./components/eventCreate/"
-<<<<<<< HEAD
 import EventEdit from "./components/eventEdit/"
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 
 import Profile from "./components/Profile/"; 
 
