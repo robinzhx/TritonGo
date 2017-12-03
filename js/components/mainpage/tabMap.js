@@ -13,6 +13,8 @@ import {
 import MapView from 'react-native-maps';
 import getDirections from 'react-native-google-maps-directions';
 
+import RNGooglePlaces from 'react-native-google-places';
+
 import LinkMap from './linkMap';
 
 const {width, height} = Dimensions.get('window')
@@ -42,7 +44,9 @@ class TabMap extends Component {
         latitude: 32.880689,
         longitude: -117.234420
       },
-      resultJson: null
+      resultJson: null,
+      visible:false,
+      whereiam: []
     }
   }
 
@@ -81,8 +85,12 @@ class TabMap extends Component {
     },
     (error) => alert(JSON.stringify(error)),
     {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000})
-
-    this.watchID = navigator.geolocation.watchPosition((position) => {
+    this.updateScale();
+    
+  }
+  updateScale() 
+  {
+      this.watchID = navigator.geolocation.watchPosition((position) => {
       var lat = parseFloat(position.coords.latitude)
       var long = parseFloat(position.coords.longitude)
       
@@ -113,7 +121,26 @@ class TabMap extends Component {
     this.setState({initialPosition: region});
   }
 
+  openSearchModal() {
 
+    RNGooglePlaces.openPlacePickerModal(
+  )
+    .then((place) => {
+    this.setState({whereiam: place,
+                  destinationPosition: {
+                    latitude: place.latitude,
+                    longitude: place.longitude
+                  }
+                  });
+    this.updateScale();
+    console.log(place);
+    
+    //connect to the database
+		// place represents user's selection from the
+		// suggestions and it is a simplified Google Place object.
+    })
+    .catch(error => console.log(error.message));  // error is a Javascript Error object
+  }
 
   render() {
     let displayInfo = null;
@@ -133,9 +160,8 @@ class TabMap extends Component {
           rotateEnabled= {false}
           scrollEnabled = {false}
           >
-          
           <MapView.Marker
-            coordinate={this.state.markerPosition} visible={this.state.visible} >
+            coordinate={this.state.markerPosition}>
               <View style={styles.radius}>
                 <View style={styles.marker} />
               </View>
@@ -143,17 +169,16 @@ class TabMap extends Component {
           <MapView.Marker
             coordinate={this.state.destinationPosition}
             title={displayInfo}>
-
           </MapView.Marker>
         </MapView>
         <View style={{padding: 10, flexDirection: 'row'}}>
           <Button rounded style={{ backgroundColor: "rgba(0,0,0,0.4)", flex: 1, justifyContent: 'flex-start'}} 
-            /*onPress={this.openSearchModal.bind(this)}*/>
+            onPress={this.openSearchModal.bind(this)}>
             <Icon active name="search" style={{ marginLeft:-10, marginRight:10 }}/>
             <Text>Search</Text>
           </Button>
         </View>
-        {/*<LinkMap start={this.state.initialPosition} end={this.state.destinationPosition}/>*/}
+        <LinkMap start={this.state.initialPosition} end={this.state.destinationPosition}/>
       </View>
     );
   }

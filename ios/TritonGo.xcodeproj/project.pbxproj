@@ -13,11 +13,9 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* TritonGoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TritonGoTests.m */; };
+		03774227343E65B317BCBEFC /* libPods-TritonGo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F427DB3F1E9BC51E52C22A0 /* libPods-TritonGo.a */; };
 		07B99455996041B6BE7A94DC /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA63B2EB9394F37AF8BF597 /* libAirMaps.a */; };
-<<<<<<< HEAD
 		131EB09230584CDE8831E303 /* libRNGooglePlaces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3591DC5E5A4D3CA6F87AA3 /* libRNGooglePlaces.a */; };
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -40,6 +38,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* TritonGoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TritonGoTests.m */; };
 		356B2B1299224D27A1FCEE46 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4AA2EBAD8934F5A85D85F42 /* Zocial.ttf */; };
 		376B17E320CB4553ACC70471 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FC3B03502574D15BE746411 /* Roboto.ttf */; };
+		42CFF2A23116C2EF205581FF /* libPods-TritonGo-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA921B4EFA504692B6801AFD /* libPods-TritonGo-tvOSTests.a */; };
+		51425440501BCCB2EB5959B8 /* libPods-TritonGoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 484483EF52C40DB08263AB6E /* libPods-TritonGoTests.a */; };
 		5C5573D781254CC887BD70B2 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5571D450F9FC4DD0BC9991B7 /* Roboto_medium.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		721DC36EA9DB42C9AA9B133F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43BE058C93BE4397932AAF41 /* SimpleLineIcons.ttf */; };
@@ -52,6 +52,7 @@
 		9EF540D4E28C4B0C93118395 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 001C7182F9184A5CACDF221B /* Octicons.ttf */; };
 		A1546D4B52C34DC9B2A84BA8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F1B3BC9A4E54F13AB4D04B3 /* FontAwesome.ttf */; };
 		BCD1EFD883C54602AC6EBB29 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED118283CC3C4A37BD616B2E /* Foundation.ttf */; };
+		E6FC51F4767B5E602205B276 /* libPods-TritonGo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D32AB8755447465A32498F2E /* libPods-TritonGo-tvOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,8 +119,7 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
-<<<<<<< HEAD
-		2B0D8ACE1FD380490011B8CD /* PBXContainerItemProxy */ = {
+		2B0D8AFD1FD380F60011B8CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1612225240149F28DE6ED2C /* RNGooglePlaces.xcodeproj */;
 			proxyType = 2;
@@ -127,9 +127,6 @@
 			remoteInfo = RNGooglePlaces;
 		};
 		2B9717141FD228410006FAF0 /* PBXContainerItemProxy */ = {
-=======
-		2B0D8B2B1FD382310011B8CD /* PBXContainerItemProxy */ = {
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 			isa = PBXContainerItemProxy;
 			containerPortal = C58723A033E449109DDDAA8B /* AirMaps.xcodeproj */;
 			proxyType = 2;
@@ -303,6 +300,7 @@
 		00E356EE1AD99517003FC87E /* TritonGoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TritonGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* TritonGoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TritonGoTests.m; sourceTree = "<group>"; };
+		0C51852B35C474F2B454A61B /* Pods-TritonGo-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TritonGo-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TritonGo-tvOS/Pods-TritonGo-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		0F1B3BC9A4E54F13AB4D04B3 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -317,24 +315,32 @@
 		2D02E4901E0B4A5D006451C7 /* TritonGo-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TritonGo-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37887E7BB5A8495CA57B4B18 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		399908DB7A41403F8E48B8D8 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		3DFE41CA0D89B335BDC16798 /* Pods-TritonGoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TritonGoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TritonGoTests/Pods-TritonGoTests.release.xcconfig"; sourceTree = "<group>"; };
 		43BE058C93BE4397932AAF41 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		44740E80EA65ED9EBC35A2E2 /* Pods-TritonGo-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TritonGo-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TritonGo-tvOSTests/Pods-TritonGo-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		484483EF52C40DB08263AB6E /* libPods-TritonGoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TritonGoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51D303F48A495760B42BA527 /* Pods-TritonGoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TritonGoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TritonGoTests/Pods-TritonGoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5571D450F9FC4DD0BC9991B7 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
+		5DADE4FFB0D52A3308D51C62 /* Pods-TritonGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TritonGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TritonGo/Pods-TritonGo.debug.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		5FC3B03502574D15BE746411 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		6B1DC61164A34E378AEBEAE8 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		9F427DB3F1E9BC51E52C22A0 /* libPods-TritonGo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TritonGo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA921B4EFA504692B6801AFD /* libPods-TritonGo-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TritonGo-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4AA2EBAD8934F5A85D85F42 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		C58723A033E449109DDDAA8B /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		D1612225240149F28DE6ED2C /* RNGooglePlaces.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGooglePlaces.xcodeproj; path = "../node_modules/react-native-google-places/ios/RNGooglePlaces.xcodeproj"; sourceTree = "<group>"; };
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
+		D32AB8755447465A32498F2E /* libPods-TritonGo-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TritonGo-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D428E8547247617980D34AB2 /* Pods-TritonGo-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TritonGo-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TritonGo-tvOSTests/Pods-TritonGo-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		D7A618F3570344F0BD91A728 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		D7FB575B5EC94393B0A2BB00 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
 		EC3591DC5E5A4D3CA6F87AA3 /* libRNGooglePlaces.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGooglePlaces.a; sourceTree = "<group>"; };
 		ED118283CC3C4A37BD616B2E /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		EEA63B2EB9394F37AF8BF597 /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
+		F244F56520924496443331E4 /* Pods-TritonGo-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TritonGo-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TritonGo-tvOS/Pods-TritonGo-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		FBE5E6C2D626CF26A0810281 /* Pods-TritonGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TritonGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TritonGo/Pods-TritonGo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				51425440501BCCB2EB5959B8 /* libPods-TritonGoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +370,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				07B99455996041B6BE7A94DC /* libAirMaps.a in Frameworks */,
 				131EB09230584CDE8831E303 /* libRNGooglePlaces.a in Frameworks */,
+				03774227343E65B317BCBEFC /* libPods-TritonGo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +386,7 @@
 				2D02E4C61E0B4AEC006451C7 /* libRCTSettings-tvOS.a in Frameworks */,
 				2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */,
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
+				E6FC51F4767B5E602205B276 /* libPods-TritonGo-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +394,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42CFF2A23116C2EF205581FF /* libPods-TritonGo-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +479,17 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		12AE30C8AEC7D3EB2BC1464A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F427DB3F1E9BC51E52C22A0 /* libPods-TritonGo.a */,
+				D32AB8755447465A32498F2E /* libPods-TritonGo-tvOS.a */,
+				AA921B4EFA504692B6801AFD /* libPods-TritonGo-tvOSTests.a */,
+				484483EF52C40DB08263AB6E /* libPods-TritonGoTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,11 +540,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		2B0D8ACB1FD380440011B8CD /* Products */ = {
+		2B0D8AFA1FD380F60011B8CD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2B0D8ACF1FD380490011B8CD /* libRNGooglePlaces.a */,
+				2B0D8AFE1FD380F60011B8CD /* libRNGooglePlaces.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -533,27 +553,14 @@
 			children = (
 				EEA63B2EB9394F37AF8BF597 /* libAirMaps.a */,
 				EC3591DC5E5A4D3CA6F87AA3 /* libRNGooglePlaces.a */,
-=======
-		2B0D8B0A1FD382300011B8CD /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				EEA63B2EB9394F37AF8BF597 /* libAirMaps.a */,
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		2B9717111FD228410006FAF0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				2B9717151FD228410006FAF0 /* libAirMaps.a */,
-=======
-		2B0D8B281FD382310011B8CD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2B0D8B2C1FD382310011B8CD /* libAirMaps.a */,
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -613,11 +620,9 @@
 				00E356EF1AD99517003FC87E /* TritonGoTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				07BAEEA345BF4250ABDA5DF9 /* Resources */,
-<<<<<<< HEAD
 				2B9716F31FD2283E0006FAF0 /* Recovered References */,
-=======
-				2B0D8B0A1FD382300011B8CD /* Recovered References */,
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
+				B5B2969D61F7089AAA2A0DA4 /* Pods */,
+				12AE30C8AEC7D3EB2BC1464A /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -634,6 +639,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B5B2969D61F7089AAA2A0DA4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5DADE4FFB0D52A3308D51C62 /* Pods-TritonGo.debug.xcconfig */,
+				FBE5E6C2D626CF26A0810281 /* Pods-TritonGo.release.xcconfig */,
+				F244F56520924496443331E4 /* Pods-TritonGo-tvOS.debug.xcconfig */,
+				0C51852B35C474F2B454A61B /* Pods-TritonGo-tvOS.release.xcconfig */,
+				44740E80EA65ED9EBC35A2E2 /* Pods-TritonGo-tvOSTests.debug.xcconfig */,
+				D428E8547247617980D34AB2 /* Pods-TritonGo-tvOSTests.release.xcconfig */,
+				51D303F48A495760B42BA527 /* Pods-TritonGoTests.debug.xcconfig */,
+				3DFE41CA0D89B335BDC16798 /* Pods-TritonGoTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -641,9 +661,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "TritonGoTests" */;
 			buildPhases = (
+				9798E125996B15E3EC7C0A4D /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				7C405B268A45FD8F4BA4EB05 /* [CP] Embed Pods Frameworks */,
+				740DB293EBA09720DA112911 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -659,10 +682,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "TritonGo" */;
 			buildPhases = (
+				86ED1AD503E60F17BEF32062 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				99460CC80FCC4280822AA3A7 /* [CP] Embed Pods Frameworks */,
+				D9CAAE8DDDF46B96F06A80BC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -677,10 +703,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "TritonGo-tvOS" */;
 			buildPhases = (
+				CB332303B79B94AF45401B3D /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
 				2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */,
+				E9BFB9C0CEC213FDCB0C6CBA /* [CP] Embed Pods Frameworks */,
+				18E993F7E214B1CDF374FACE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -695,9 +724,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "TritonGo-tvOSTests" */;
 			buildPhases = (
+				0EA2E1070F83201880E68E0F /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
+				EFF24100B3EA707D2C3420A5 /* [CP] Embed Pods Frameworks */,
+				8AF778301530116601E5C53E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -751,11 +783,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-<<<<<<< HEAD
 					ProductGroup = 2B9717111FD228410006FAF0 /* Products */;
-=======
-					ProductGroup = 2B0D8B281FD382310011B8CD /* Products */;
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 					ProjectRef = C58723A033E449109DDDAA8B /* AirMaps.xcodeproj */;
 				},
 				{
@@ -803,7 +831,7 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 2B0D8ACB1FD380440011B8CD /* Products */;
+					ProductGroup = 2B0D8AFA1FD380F60011B8CD /* Products */;
 					ProjectRef = D1612225240149F28DE6ED2C /* RNGooglePlaces.xcodeproj */;
 				},
 			);
@@ -874,12 +902,11 @@
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-<<<<<<< HEAD
-		2B0D8ACF1FD380490011B8CD /* libRNGooglePlaces.a */ = {
+		2B0D8AFE1FD380F60011B8CD /* libRNGooglePlaces.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNGooglePlaces.a;
-			remoteRef = 2B0D8ACE1FD380490011B8CD /* PBXContainerItemProxy */;
+			remoteRef = 2B0D8AFD1FD380F60011B8CD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2B9717151FD228410006FAF0 /* libAirMaps.a */ = {
@@ -887,13 +914,6 @@
 			fileType = archive.ar;
 			path = libAirMaps.a;
 			remoteRef = 2B9717141FD228410006FAF0 /* PBXContainerItemProxy */;
-=======
-		2B0D8B2C1FD382310011B8CD /* libAirMaps.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAirMaps.a;
-			remoteRef = 2B0D8B2B1FD382310011B8CD /* PBXContainerItemProxy */;
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2BFDE8961FC390E500CAB4B9 /* libthird-party.a */ = {
@@ -1105,6 +1125,39 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		0EA2E1070F83201880E68E0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TritonGo-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		18E993F7E214B1CDF374FACE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TritonGo-tvOS/Pods-TritonGo-tvOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1118,6 +1171,170 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		740DB293EBA09720DA112911 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TritonGoTests/Pods-TritonGoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C405B268A45FD8F4BA4EB05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TritonGoTests/Pods-TritonGoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86ED1AD503E60F17BEF32062 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TritonGo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AF778301530116601E5C53E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TritonGo-tvOSTests/Pods-TritonGo-tvOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9798E125996B15E3EC7C0A4D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TritonGoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99460CC80FCC4280822AA3A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TritonGo/Pods-TritonGo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB332303B79B94AF45401B3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TritonGo-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9CAAE8DDDF46B96F06A80BC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TritonGo/Pods-TritonGo-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Versions/A/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TritonGo/Pods-TritonGo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9BFB9C0CEC213FDCB0C6CBA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TritonGo-tvOS/Pods-TritonGo-tvOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFF24100B3EA707D2C3420A5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TritonGo-tvOSTests/Pods-TritonGo-tvOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1174,6 +1391,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51D303F48A495760B42BA527 /* Pods-TritonGoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = ENRN2R9WGJ;
@@ -1184,10 +1402,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-google-places/ios",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				INFOPLIST_FILE = TritonGoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1195,10 +1410,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1211,6 +1423,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DFE41CA0D89B335BDC16798 /* Pods-TritonGoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -1218,10 +1431,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-google-places/ios",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				INFOPLIST_FILE = TritonGoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1229,10 +1439,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1245,6 +1452,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DADE4FFB0D52A3308D51C62 /* Pods-TritonGo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1256,10 +1464,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-google-places/ios",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				INFOPLIST_FILE = TritonGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1277,6 +1482,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBE5E6C2D626CF26A0810281 /* Pods-TritonGo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1287,10 +1493,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-google-places/ios",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				INFOPLIST_FILE = TritonGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1308,6 +1511,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F244F56520924496443331E4 /* Pods-TritonGo-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1321,20 +1525,14 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-google-places/ios",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				INFOPLIST_FILE = "TritonGo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1350,6 +1548,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C51852B35C474F2B454A61B /* Pods-TritonGo-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1363,20 +1562,14 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
-<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-google-places/ios",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				INFOPLIST_FILE = "TritonGo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1392,6 +1585,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44740E80EA65ED9EBC35A2E2 /* Pods-TritonGo-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1406,10 +1600,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.TritonGo-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1421,6 +1612,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D428E8547247617980D34AB2 /* Pods-TritonGo-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1435,10 +1627,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-<<<<<<< HEAD
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.TritonGo-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -23,6 +23,8 @@ import {
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 
+import RNGooglePlaces from 'react-native-google-places';
+
 import styles from "./styles";
 
 class EventCreate extends Component {
@@ -40,7 +42,11 @@ class EventCreate extends Component {
       endTime: "",
       location:"",
       description: "",
-      type: ""
+      type: "",
+      locationName: "",
+      
+      latitude: "",
+      longitude: ""
     };
   }
   
@@ -78,6 +84,25 @@ class EventCreate extends Component {
       buttonText: "Nice"
     });
     this.props.navigation.goBack();
+  }
+  
+  openSearchModal() {
+
+    RNGooglePlaces.openPlacePickerModal(
+  )
+    .then((place) => {
+    this.setState({
+                    latitude: place.latitude,
+                    longitude: place.longitude,
+                    locationName: place.name
+                  });
+    console.log(place);
+    
+    //connect to the database
+		// place represents user's selection from the
+		// suggestions and it is a simplified Google Place object.
+    })
+    .catch(error => console.log(error.message));  // error is a Javascript Error object
   }
   
   _showDatePicker = () => this.setState({ isDatePickerVisible: true });
@@ -156,13 +181,27 @@ class EventCreate extends Component {
               multiline={true} onChangeText={(text) => this.setState({description: text})}
             />
           </Item>
-          <Item regular style={{marginBottom: 10}} >
+          </KeyboardAvoidingView>
+            
+          {/*<Item regular style={{marginBottom: 10}} >
             <Icon style={{marginLeft: 5}} name="map" />
             <Input placeholder="Location" blurOnSubmit={true} 
               onChangeText={(text) => this.setState({location: text})}
             />
-          </Item>
-          </KeyboardAvoidingView>
+          </Item>*/}
+          
+          <View style={{ marginBottom: 10, marginTop: 5, flexDirection: "row" }}>
+            <Button bordered
+              style={styles.dateBtn}
+              onPress={() => this.openSearchModal() }>
+              <Icon style={{color: '#000', marginLeft: 0, marginRight: 14}} name="map" />
+              {this.state.locationName == "" ? 
+                <Text style={styles.placeholderText}>Location</Text>
+                : 
+                <Text style={styles.timeText}>{this.state.locationName}</Text>
+              }
+            </Button>
+          </View>
           
           <View style={{ marginBottom: 10, marginTop: 5, flexDirection: "row" }}>
             

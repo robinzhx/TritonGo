@@ -24,6 +24,7 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 
 import styles from "./styles";
+import RNGooglePlaces from 'react-native-google-places';
 
 class EventEdit extends Component {
   // eslint-disable-line
@@ -80,6 +81,26 @@ class EventEdit extends Component {
     this.props.navigation.navigate('CalendarWFooter');
   }
   
+  openSearchModal() {
+
+    RNGooglePlaces.openPlacePickerModal(
+  )
+    .then((place) => {
+    this.setState({whereiam: place,
+                  destinationPosition: {
+                    latitude: place.latitude,
+                    longitude: place.longitude
+                  }
+                  });
+    this.updateScale();
+    console.log(place);
+    
+    //connect to the database
+		// place represents user's selection from the
+		// suggestions and it is a simplified Google Place object.
+    })
+    .catch(error => console.log(error.message));  // error is a Javascript Error object
+  }
   
   _showDatePicker = () => this.setState({ isDatePickerVisible: true });
   _hideDatePicker = () => this.setState({ isDatePickerVisible: false });
