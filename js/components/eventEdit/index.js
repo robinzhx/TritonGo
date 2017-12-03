@@ -41,7 +41,7 @@ class EventEdit extends Component {
       endTime: '',
       location: '',
       description: '',
-      eventID : "-L-KmPi-igK08J5erd6h"
+      eventID : ""
     };
   }
   
@@ -49,8 +49,8 @@ class EventEdit extends Component {
     firebaseApp.database().ref('events/' + this.state.eventID).set({
       Title: this.state.title,
       Date: this.state.date,
-      StartTime: this.state.endTime,
-      EndTime: this.state.startTime,
+      StartTime: this.state.startTime,
+      EndTime: this.state.endTime,
       Location : this.state.location,
       Description: this.state.description,
       Public: this.state.public

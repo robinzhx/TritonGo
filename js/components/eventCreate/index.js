@@ -64,8 +64,8 @@ class EventCreate extends Component {
     firebaseApp.database().ref('events/' + eventID.key).set({
       Title: this.state.title,
       Date: this.state.date,
-      StartTime: this.state.endTime,
-      EndTime: this.state.startTime,
+      StartTime: this.state.startTime,
+      EndTime: this.state.endTime,
       Location : this.state.location,
       Description: this.state.description,
       Public: this.state.public,

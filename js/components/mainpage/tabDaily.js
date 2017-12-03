@@ -104,101 +104,12 @@ class TabDaily extends Component {
       }, 900);
   }
   
+  addToCalendar(id) {
+        firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).push({eventId: id})
+  }
+  
   render() {
-      /*
-      <Card style={styles.mb}>
-                <CardItem bordered>
-                  <Left>
-                    <Thumbnail source={event2logo} />
-                    <Body>
-                      <Text>VR Club GBM #2</Text>
-                      <Text note>Nov 21, 2017</Text>
-                    </Body>
-                  </Left>
-                </CardItem>
-
-                <CardItem>
-                  <Body>
-                    <Image
-                      style={{
-                        alignSelf: "center",
-                        height: 150,
-                        resizeMode: "cover",
-                        width: deviceWidth / 1.18,
-                        marginVertical: 5
-                      }}
-                      source={event2}
-                    />
-                    <Text>
-                      The Virtual Reality Club at UCSD is a student organization at UC San 
-                      Diego that connects members with the VR industry through workshops, 
-                      projects, and networks. Our mission is to foster a multidisciplinary 
-                      community dedicated to exploring and creating Virtual and Augmented 
-                      Reality experiences.
-                    </Text>
-                  </Body>
-                </CardItem>
-                <CardItem style={{ paddingVertical: 0 }}>
-                  <Left>
-                    <Button transparent>
-                      <Icon name="logo-facebook" />
-                      <Text> See Detail</Text>
-                    </Button>
-                  </Left>
-                  <Right>
-                    <Button transparent>
-                      <Text>Add to Calendar </Text>
-                      <Icon active name="play" />
-                    </Button>
-                  </Right>
-                </CardItem>
-              </Card>
-
-              <Card style={styles.mb}>
-                <CardItem bordered>
-                  <Left>
-                    <Thumbnail source={event3logo} />
-                    <Body>
-                      <Text>TritonGo Demo Day!</Text>
-                      <Text note>Dec 23, 2017</Text>
-                    </Body>
-                  </Left>
-                </CardItem>
-
-                <CardItem>
-                  <Body>
-                    <Image
-                      style={{
-                        alignSelf: "center",
-                        height: 150,
-                        resizeMode: "cover",
-                        width: deviceWidth / 1.18,
-                        marginVertical: 5
-                      }}
-                      source={event3}
-                    />
-                    <Text>
-                      What is TritonGo? Bring the question and come over out demo event!
-                      Be prepare for amazed by our great application!
-                    </Text>
-                  </Body>
-                </CardItem>
-                <CardItem style={{ paddingVertical: 0 }}>
-                  <Left>
-                    <Button transparent>
-                      <Icon name="logo-facebook" />
-                      <Text> See Detail</Text>
-                    </Button>
-                  </Left>
-                  <Right>
-                    <Button transparent>
-                      <Text>Add to Calendar </Text>
-                      <Icon active name="play" />
-                    </Button>
-                  </Right>
-                </CardItem>
-              </Card>
-              */
+      
       return (
         this.state.isLoading ?
         <Spinner color="grey" style={{ margin: 20 }}/>
@@ -245,7 +156,7 @@ class TabDaily extends Component {
                     </Left>
                     <Right>
                       <Button transparent
-                        onPress={()=> this.display()}>
+                        onPress={()=> this.addToCalendar(item['EventId'])}>
                         <Text>Add to Calendar </Text>
                         <Icon active name="play" />
                       </Button>

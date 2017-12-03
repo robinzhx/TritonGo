@@ -89,15 +89,6 @@ import AdvSegment from "./components/segment/segmentTab";
 import SimpleDeck from "./components/deckswiper/simple";
 import AdvancedDeck from "./components/deckswiper/advanced";
 
-const mapNavigationStateParamsToProps = (SomeComponent) => {
-    return class extends Component {
-        static navigationOptions = SomeComponent.navigationOptions; // better use hoist-non-react-statics
-        render() {
-            const {navigation: {state: {params}}} = this.props
-            return <SomeComponent {...params} {...this.props} />
-        }
-    }
-}
 
 const AppNavigator = StackNavigator(
     {

@@ -106,6 +106,7 @@ import statusBarColor from "./themes/variables";
 
 class AppNavigator extends Component {
   render() {
+    console.disableYellowBox = true;
     return ;
   }
 }
