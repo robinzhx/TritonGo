@@ -1,12 +1,16 @@
 const React = require("react-native");
 
 const { StyleSheet } = React;
+<<<<<<< HEAD
 const primary = "#2874F0";
+=======
+>>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 
 export default {
   container: {
     backgroundColor: "#FFF"
   },
+<<<<<<< HEAD
   bg: {
     backgroundColor: primary,
   },
@@ -40,5 +44,9 @@ export default {
   },
   timeText: {
     color: "#000"
+=======
+  mb10: {
+    marginBottom: 10
+>>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
   }
 };

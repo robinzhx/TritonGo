@@ -58,12 +58,18 @@ class CalendarWFooter extends Component {
   }
   
   allEvents(){
+<<<<<<< HEAD
     firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).on('value', (snap) => {   
       var items = []
       var array = []
+=======
+    firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).once('value', (snap) => {
+      var itemsPri = []
+>>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
       snap.forEach((child) => {
-        items.push(child.val().eventId);
+        itemsPri.push(child.val().eventId);
       });
+<<<<<<< HEAD
       for (var j = 0; j < items.length; j++) {
         var ref = firebaseApp.database().ref('events/' + items[j]);
         ref.once('value').then((snapshot) => {
@@ -78,6 +84,14 @@ class CalendarWFooter extends Component {
       snap.forEach((child) => {
         if (child.val()['Public'])
           itemsPub.push(child.val());
+=======
+      this.setState({numEvent: itemsPri.length})
+    });
+    firebaseApp.database().ref().child('events').once('value', (snap) => {
+      var itemsPub = []
+      snap.forEach((child) => {
+        itemsPub.push(child.val());
+>>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
       });
       this.setState({numDaily: itemsPub.length})
     });

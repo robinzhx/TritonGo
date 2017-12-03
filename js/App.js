@@ -15,7 +15,10 @@ import ForgetPage from "./components/home/forgetpage";
 import Drawer from "./Drawer";
 
 import EventCreate from "./components/eventCreate/"
+<<<<<<< HEAD
 import EventEdit from "./components/eventEdit/"
+=======
+>>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 
 import Header from "./components/Header/";
 import Header1 from "./components/Header/1";
@@ -118,7 +121,10 @@ const AppNavigator = StackNavigator(
       
         CalendarWFooter: { screen: CalendarWFooter },
         EventCreate: {screen: EventCreate},
+<<<<<<< HEAD
         EventEdit: {screen: EventEdit},
+=======
+>>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
         
         Profile: { screen: Profile},
 
