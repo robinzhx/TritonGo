@@ -21,6 +21,15 @@ export default {
     marginRight: 10,
     marginTop: 17
   },
+  item: {
+    flexDirection: "row", justifyContent: "space-between",
+    backgroundColor: 'white',
+    flex: 1,
+    borderRadius: 5,
+    padding: 10,
+    marginRight: 10,
+    marginTop: 17
+  },
   emptyDate: {
     height: 15,
     flex:1,

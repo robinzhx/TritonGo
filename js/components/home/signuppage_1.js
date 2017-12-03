@@ -13,8 +13,7 @@ import {
   H3, 
   Text, 
   Header, 
-  Title,
-  Toast,
+  Title, 
   Body, 
   Left, 
   Right } from "native-base";
@@ -26,16 +25,44 @@ import LoginBtn from './LoginBtn';
 const launchscreenBg = require("../../../img/launchscreen-bg.png");
 const launchscreenLogo = require("../../../img/logo-tritongo.png");
 
+const firebaseApp = require('../../firebase').firebaseApp;
 
-class Home extends Component {
+class SignUpPage extends Component {
 	// eslint-disable-line
-    constructor(props){
+     constructor(props){
       super(props);
 
       this.state = {
         email: '',
         password: '',
       }
+    }
+  
+    signup() {
+      firebaseApp.auth().createUserWithEmailAndPassword(
+        this.state.email,
+        this.state.password).then(() => {
+          alert('Your account was created!');
+          this.props.navigation.navigate("CalendarWFooter");
+      }).catch((error) => {
+         switch(error.code){
+
+          case "auth/email-already-in-use":
+            alert("The new user account cannot be created because the email is already in use.");
+          break;
+
+          case "auth/invalid-email":
+            alert("The specified email is not a valid email.");
+          break;
+
+          case "auth/weak-password":
+            alert("The password is too weak!");
+          break;
+
+          default:
+            alert("Error creating user:");
+        }
+      });
     }
   
 	render() {
@@ -49,6 +76,7 @@ class Home extends Component {
                       </View>
 
                       <Content style={{marginTop: 110}} >
+
                         <Form style={{marginRight: 10}}>
                           <Item floatingLabel>
                             <Icon active name="person" style={{ color: "#fff"}} />
@@ -67,20 +95,10 @@ class Home extends Component {
                             />
                           </Item>
                         </Form>
-                        <Button transparent small
-                          style={{ opacity:0.6, alignSelf: 'flex-end' }}
-                          onPress={()=> this.props.navigation.navigate("ForgetPage")}
-                        >
-                          <Text style={{color: '#fff'}}>Forget?</Text>
-                          <Icon active name="refresh" style={{ color: "#fff" }} />
-                        </Button>
                       </Content>
                     </KeyboardAvoidingView>
 					<View style={{ marginBottom: 20 }}>
-                      <View style={{marginBottom: 60, marginTop: 20}}>
-                        <LoginBtn password = {this.state.password} email = {this.state.email} 
-                          action={() => this.props.navigation.navigate("CalendarWFooter")} />
-                      </View>
+                      <View style={{marginBottom: 60, marginTop: 20}}><LoginBtn action={() => this.signup()}/></View>
                       {/*<Button rounded 
                           style={{margin: 20, justifyContent: 'center', alignSelf: 'stretch'}}
                           //onPress={() => this.props.navigation.navigate("./")}
@@ -90,7 +108,6 @@ class Home extends Component {
                       </Button>*/}
                       <Button transparent small
                             style={{ alignSelf: "center" }}
-                            onPress={()=> this.props.navigation.navigate("SignUpPage")}
                         >
                         <Text style={{color: '#fff', opacity:0.6 }}>Don't have a account? </Text>
                         <Text style={{color: '#fff'}}>Sign Up</Text>
@@ -102,4 +119,4 @@ class Home extends Component {
 	}
 }
 
-export default Home;
+export default SignUpPage;

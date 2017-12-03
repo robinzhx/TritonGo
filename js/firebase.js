@@ -3,12 +3,12 @@ import 'firebase/auth';
 import 'firebase/database';
 
 var firebaseConfig = {
-    apiKey: "AIzaSyBo3tXAIyM0BfZgodUpAWJ2saxoDiDVrtE",
-    authDomain: "my-app-15445.firebaseapp.com",
-    databaseURL: "https://my-app-15445.firebaseio.com",
-    projectId: "my-app-15445",
-    storageBucket: "my-app-15445.appspot.com",
-    messagingSenderId: "685807203825"
+    apiKey: "AIzaSyBc04CVZWge1WHkw734cXisxLerreJvq7E",
+    authDomain: "triton-go.firebaseapp.com",
+    databaseURL: "https://triton-go.firebaseio.com",
+    projectId: "triton-go",
+    storageBucket: "",
+    messagingSenderId: "518641838604"
 };
 
 firebaseApp = firebase.initializeApp(firebaseConfig);

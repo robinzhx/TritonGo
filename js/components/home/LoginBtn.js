@@ -46,7 +46,8 @@ class LoginBtn extends Component {
         }
       ).catch((error) =>
         {
-          Toast.show({text: "Login Failed. Please Try again. " + error, buttonText: "Okay", duration: 3000})
+          Toast.show({text: "Login Failed" + '\n' + error, type: 'danger', 
+                      buttonText: "Okay", duration: 3500})
           this.state.successLogin = false
         }
       );

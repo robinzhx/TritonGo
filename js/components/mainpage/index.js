@@ -23,14 +23,15 @@ import {
   TabHeading,
   Thumbnail,
   View,
-  StyleProvider
+  StyleProvider,
+  Toast
 } from "native-base";
 
 import styles from "./styles";
 
 import TabCalendar from './tabCalendar';
 import TabDaily from './tabDaily';
-import TabMap from './mapView';
+import TabMap from './tabMap';
 
 import getTheme from '../../../theme/components';
 
@@ -48,16 +49,37 @@ class CalendarWFooter extends Component {
       numEvent: 0,
       numDaily: 0
     };
-    this.allEvents()
   }
 
+  componentDidMount() {
+      setTimeout(() => {
+        this.allEvents()
+      }, 300);
+  }
+  
   allEvents(){
-    firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).once('value', (snap) => {
+    firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).on('value', (snap) => {   
       var items = []
+      var array = []
       snap.forEach((child) => {
         items.push(child.val().eventId);
       });
-      this.setState({numEvent: items.length, numDaily: items.length})
+      for (var j = 0; j < items.length; j++) {
+        var ref = firebaseApp.database().ref('events/' + items[j]);
+        ref.once('value').then((snapshot) => {
+            array.push(snapshot.val())
+            this.setState({numEvent: array.length})
+        });
+      }
+    });
+  
+    firebaseApp.database().ref().child('events').on('value', (snap) => {
+      var itemsPub = []
+      snap.forEach((child) => {
+        if (child.val()['Public'])
+          itemsPub.push(child.val());
+      });
+      this.setState({numDaily: itemsPub.length})
     });
   }
   
@@ -96,6 +118,10 @@ class CalendarWFooter extends Component {
     this.tabView.goToPage(2)
   }
 
+  editEvent(item) {
+    this.props.navigation.navigate('EventEdit',{id : item})
+  }
+  
   render() {
     return (
       <StyleProvider style={getTheme()}>
@@ -117,20 +143,25 @@ class CalendarWFooter extends Component {
             <Title style={{ color: "#FFF" }}>Main</Title>
           </Body>
           <Right>
-            <Button transparent><Icon style={{ color: "#FFF" }} name="search" /></Button>
-            <Button transparent><Icon style={{ color: "#FFF" }} name="more" /></Button>
+            <Button 
+              transparent
+              onPress={() => this.props.navigation.navigate("EventCreate")}
+            >
+              <Icon active style={{ color: "#FFF" }} name="add" />
+            </Button>
           </Right>
         </Header>
         
-        <Tabs onChangeTab={({ i })=> this.toggleTab(i)} initialPage={1} ref={(tabView) => {this.tabView = tabView}} tabBarUnderlineStyle={{backgroundColor:"#FFF"}}>
+        <Tabs onChangeTab={({ i })=> this.toggleTab(i)} initialPage={1} ref={(tabView) => {this.tabView = tabView}}
+          tabBarUnderlineStyle={{backgroundColor:"#FFF"}}>
             <Tab heading={ <TabHeading />}>
               <TabDaily />
             </Tab>
             <Tab heading={ <TabHeading />}>
-              <TabCalendar eventNames= {this.state.arr}/>
+              <TabCalendar editevent={(id) => this.editEvent(id)} eventNames= {this.state.arr}/>
             </Tab>
             <Tab heading={ <TabHeading />}>
-              <TabMap />
+              <TabMap location={{latitude: 37.621343, longitude: -122.378957}}/>
             </Tab>
         </Tabs>
 

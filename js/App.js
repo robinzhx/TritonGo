@@ -10,8 +10,13 @@ import CalendarWFooter from "./components/mainpage/";
 import Profile from "./components/Profile/"; 
 import Home from "./components/home/";
 import SignUpPage from "./components/home/signuppage";
+import ForgetPage from "./components/home/forgetpage";
 
 import Drawer from "./Drawer";
+
+import EventCreate from "./components/eventCreate/"
+import EventEdit from "./components/eventEdit/"
+
 import Header from "./components/Header/";
 import Header1 from "./components/Header/1";
 import Header2 from "./components/Header/2";
@@ -84,6 +89,16 @@ import AdvSegment from "./components/segment/segmentTab";
 import SimpleDeck from "./components/deckswiper/simple";
 import AdvancedDeck from "./components/deckswiper/advanced";
 
+const mapNavigationStateParamsToProps = (SomeComponent) => {
+    return class extends Component {
+        static navigationOptions = SomeComponent.navigationOptions; // better use hoist-non-react-statics
+        render() {
+            const {navigation: {state: {params}}} = this.props
+            return <SomeComponent {...params} {...this.props} />
+        }
+    }
+}
+
 const AppNavigator = StackNavigator(
     {
         Drawer: { screen: Drawer },
@@ -97,8 +112,14 @@ const AppNavigator = StackNavigator(
         Header7: { screen: Header7 },
         Header8: { screen: Header8 },
       
-        CalendarWFooter: { screen: CalendarWFooter },
         Home: { screen: Home },
+        SignUpPage: { screen: SignUpPage },
+        ForgetPage: { screen: ForgetPage },
+      
+        CalendarWFooter: { screen: CalendarWFooter },
+        EventCreate: {screen: EventCreate},
+        EventEdit: {screen: EventEdit},
+        
         Profile: { screen: Profile},
 
         BasicFooter: { screen: BasicFooter },

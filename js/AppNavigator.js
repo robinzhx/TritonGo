@@ -6,11 +6,16 @@ import getTheme from "../native-base-theme/components";
 import material from "../native-base-theme/variables/material";
 import platform from "../native-base-theme/variables/platform";
 
-import CalendarWFooter from "./components/mainpage/"; 
-import Profile from "./components/Profile/"; 
 
 import Home from "./components/home/";
-import SignUpPage from "./components/home/login";
+import SignUpPage from "./components/home/signuppage";
+import ForgetPage from "./components/home/forgetpage";
+
+import CalendarWFooter from "./components/mainpage/"; 
+import EventCreate from "./components/eventCreate/"
+import EventEdit from "./components/eventEdit/"
+
+import Profile from "./components/Profile/"; 
 
 import Header from "./components/Header/";
 import Header1 from "./components/Header/1";
