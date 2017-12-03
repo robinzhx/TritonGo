@@ -99,8 +99,12 @@ class TabCalendar extends Component {
         this.state.items[eventTime].push({
           startTime: this.state.arr[j]['StartTime'],
           endTime: this.state.arr[j]['EndTime'],
+          date: this.state.arr[j]['Date'],
           title: this.state.arr[j]['Title'],
-          location: this.state.arr[j]['Location'],
+          description: this.state.arr[j]['Description'],
+          locationName: this.state.arr[j]['LocationName'],
+          latitude: this.state.arr[j]['Latitude'],
+          longitude: this.state.arr[j]['Longitude'],
           eventId: this.state.arr[j]['EventId'],
           height: Math.max(50, Math.floor(Math.random() * 100))
         });
@@ -122,12 +126,15 @@ class TabCalendar extends Component {
         <Left style={{flex:2}}>
           <Text>{item.startTime} - {item.endTime}</Text>
           <Text>{item.title}</Text>
-          <Text>{item.location}</Text>
+          <Text>{item.locationName}</Text>
         </Left>
         <Right>
-          <Button onPress={() => this.props.editevent(item.eventId)} >
-            <Icon active name="play"/>
+          <Button onPress={() => this.props.navigatemap({latitude: item.latitude, longitude: item.longitude})} >
+            <Icon active name="navigate"/>
           </Button>
+          {/*<Button onPress={() => this.props.editevent(item)} >
+            <Icon active name="play"/>
+          </Button>*/}
         </Right>
       </View>
     );

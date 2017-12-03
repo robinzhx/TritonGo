@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { KeyboardAvoidingView } from "react-native";
 import {
   Container,
   Header,
@@ -35,14 +35,31 @@ class EventEdit extends Component {
       isStartTimePickerVisible: false,
       isEndTimePickerVisible: false,
       public: false,
-      title: '',
-      date: '',
-      startTime: '',
-      endTime: '',
-      location: '',
-      description: '',
-      eventID : ""
+      title: "",
+      date: "",
+      startTime: "",
+      endTime: "",
+      location:"",
+      description: "",
+      type: "",
+      locationName: "",
+      eventId:"",
+      latitude: "",
+      longitude: ""
     };
+  }
+  
+  componentDidMount() {
+    this.setState({
+      public: this.props.navigation.state.params.eventItem['public'],
+      title: this.props.navigation.state.params.eventItem['title'],
+      date: this.props.navigation.state.params.eventItem['date'],
+      startTime: this.props.navigation.state.params.eventItem['startTime'],
+      endTime: this.props.navigation.state.params.eventItem['endTime'],
+      locationName: this.props.navigation.state.params.eventItem['locationName'],
+      description: this.props.navigation.state.params.eventItem['description'],
+      eventId : this.props.navigation.state.params.eventItem['eventId']
+    });
   }
   
   editEvent() {
@@ -56,13 +73,13 @@ class EventEdit extends Component {
       Public: this.state.public
     });
     Toast.show({
-      text: "Create Event Successfully",
+      text: "Edit Event Successfully",
       duration: 2500,
       position: "top",
       textStyle: { textAlign: "center" },
       type: "success"
     });
-    this.props.navigation.goBack();
+    this.props.navigation.navigate('CalendarWFooter');
   }
   
   deleteEvent(id) {
@@ -86,13 +103,11 @@ class EventEdit extends Component {
     RNGooglePlaces.openPlacePickerModal(
   )
     .then((place) => {
-    this.setState({whereiam: place,
-                  destinationPosition: {
+    this.setState({
                     latitude: place.latitude,
-                    longitude: place.longitude
-                  }
+                    longitude: place.longitude,
+                    locationName: place.name
                   });
-    this.updateScale();
     console.log(place);
     
     //connect to the database
@@ -145,65 +160,89 @@ class EventEdit extends Component {
           >
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon  style={{ color: "#fff" }} name="arrow-back" />
+              <Icon style={{ color: "#fff" }} name="arrow-back" />
             </Button>
           </Left>
           <Body>
-            <Title style={{ color: "#fff" }}>Create Event</Title>
+            <Icon active style={{ color: "#fff" }} name="bulb" />
           </Body>
           <Right />
         </Header>
 
         <View showsVerticalScrollIndicator={false} style={styles.bg} >
-          <Item transparent>
-            <Icon style={{ color: "#fff", marginLeft: 10}} name="paper" />
-            <Input style={{color: "white"}} placeholder="Enter Title Here" 
-              placeholderTextColor="rgba(255,255,255,0.6)" blurOnSubmit={true}
+          <Item transparent style={{marginTop:-10}}>
+            <Input style={{color: "#fff", marginLeft: 4, textAlign: 'center', fontWeight: 'bold' }} 
+              placeholder="Enter Your Title" 
+              placeholderTextColor="rgba(255,255,255,0.8)" 
+              selectionColor={"#fff"}
               onChangeText={(text) => this.setState({title: text})}
+              blurOnSubmit={true}
             />
           </Item>
         </View>
         
+        
         <Content padder>
-          <Item style={{marginBottom: 15}} rounded>
-            <Icon style={{marginLeft: 10}} name="paper" />
-            <Input style={{marginBottom: 15, marginTop: 8}}
-              placeholder="Description" 
+          
+          <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+          <Item regular style={{marginBottom: 10, alignItems:'flex-start'}} >
+            <Icon style={{marginLeft: 5, marginTop: 10}} name="paper" />
+            <Input style={{marginBottom: 15, marginTop: 7}}
+              placeholder="Description" blurOnSubmit={true} 
               multiline={true} onChangeText={(text) => this.setState({description: text})}
             />
           </Item>
-          <Item style={{marginBottom: 15}} rounded>
-            <Icon style={{marginLeft: 10}} name="paper" />
+          </KeyboardAvoidingView>
+            
+          {/*<Item regular style={{marginBottom: 10}} >
+            <Icon style={{marginLeft: 5}} name="map" />
             <Input placeholder="Location" blurOnSubmit={true} 
               onChangeText={(text) => this.setState({location: text})}
             />
-          </Item>
+          </Item>*/}
+          
           <View style={{ marginBottom: 10, marginTop: 5, flexDirection: "row" }}>
-            <Button bordered rounded
+            <Button bordered
+              style={styles.dateBtn}
+              onPress={() => this.openSearchModal() }>
+              <Icon style={{color: '#000', marginLeft: 0, marginRight: 14}} name="map" />
+              {this.state.locationName == "" ? 
+                <Text style={styles.placeholderText}>Location</Text>
+                : 
+                <Text style={styles.timeText}>{this.state.locationName}</Text>
+              }
+            </Button>
+          </View>
+          
+          <View style={{ marginBottom: 10, marginTop: 5, flexDirection: "row" }}>
+            
+            <Button bordered
               style={styles.dateBtn}
               onPress={this._showDatePicker}>
+              <Icon style={{color: '#000', marginLeft: 0, marginRight: 14}} name="time" />
               {this.state.date == "" ? 
-                <Text>Date</Text>
+                <Text style={styles.placeholderText}>Date</Text>
                 : 
                 <Text style={styles.timeText}>{this.state.date}</Text>
               }
             </Button>
           </View>
           <View style={{ marginBottom: 10, marginTop: 5, flexDirection: "row" }}>
-            <Button bordered rounded
+            <Button bordered
               style={styles.startTimeBtn}
               onPress={this._showStartTimePicker}>
               {this.state.startTime == "" ? 
-                <Text>Start Time</Text>
+                <Text style={styles.placeholderText}>Start Time</Text>
                 : 
                 <Text style={styles.timeText}>{this.state.startTime}</Text>
               }
             </Button>
-            <Button bordered rounded
+            <Icon style={{margin:8, color:"grey"}} name="arrow-forward" />
+            <Button bordered
               style={styles.endTimeBtn}
               onPress={this._showEndTimePicker}>
               {this.state.endTime == "" ? 
-                <Text>End Time</Text>
+                <Text style={styles.placeholderText}>End Time</Text>
                 : 
                 <Text style={styles.timeText}>{this.state.endTime}</Text>
               }
@@ -220,8 +259,18 @@ class EventEdit extends Component {
           
           <View style={{ marginBottom: 10, marginTop: 5, flexDirection: "row" }}>
             <Button rounded style={styles.submitBtn}
-              onPress={() => this.deleteEvent(this.props.navigation.state.params.id)}>
+              onPress={() => Toast.show({
+      text: "" + this.props.navigation.state.params.eventItem["title"],
+      duration: 2500,
+      position: "top",
+      textStyle: { textAlign: "center" },
+      type: "success"
+    })}>
               <Text>Submit</Text>
+            </Button>
+            <Button rounded style={styles.deleteBtn} danger
+              onPress={() => this.deleteEvent(this.props.navigation.state.params.eventItem["eventId"])}>
+              <Text>Delete</Text>
             </Button>
           </View>
         </Content>

@@ -8,7 +8,7 @@ export default {
     backgroundColor: "#FFF"
   },
   bg: {
-    backgroundColor: primary
+    backgroundColor: primary,
   },
   mb10: {
     marginBottom: 10
@@ -16,28 +16,39 @@ export default {
   startTimeBtn: {
     borderColor: "grey",
     marginRight: 5, 
-    flex:1, 
-    justifyContent: "center"
+    flex:1
   },
   endTimeBtn: {
     borderColor: "grey",
     marginLeft: 5, 
-    flex:1, 
-    justifyContent: "center"
+    flex:1
   },
   dateBtn: { 
     borderColor: "grey",
-    flex:1, 
-    justifyContent: "center" 
+    justifyContent: "flex-start",
+    flex:1
   },
   eventTypeBtn: {
     flex:1,
   },
   submitBtn: { 
     flex:1, 
+    marginRight: 5, 
+    
     justifyContent: "center" 
   },
+  deleteBtn: { 
+    flex:1, 
+    marginLeft: 5, 
+    justifyContent: "center" 
+  },
+  placeholderText: {
+    color: "rgba(0,0,0,0.6)"
+  },
   timeText: {
-    color: "black"
+    color: "#000"
+  },
+  mb10: {
+    marginBottom: 10
   }
 };

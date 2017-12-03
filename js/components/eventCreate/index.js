@@ -42,7 +42,6 @@ class EventCreate extends Component {
       endTime: "",
       location:"",
       description: "",
-      type: "",
       locationName: "",
       
       latitude: "",
@@ -52,22 +51,19 @@ class EventCreate extends Component {
   
   createEvent() {
     var eventID = firebaseApp.database().ref('events/').push({
-      Title: "",
-      Date: "",
-      StartTime: "",
-      EndTime: "",
-      Location : "",
-      Description: "",
-      Public: false,
-      EventId: ""
+      Title: ""
     });
     firebaseApp.database().ref('events/' + eventID.key).set({
       Title: this.state.title,
       Date: this.state.date,
       StartTime: this.state.startTime,
       EndTime: this.state.endTime,
-      Location : this.state.location,
       Description: this.state.description,
+      
+      LocationName : this.state.locationName,
+      Latitude: this.state.latitude,
+      Longitude: this.state.longitude,
+      
       Public: this.state.public,
       EventId: eventID.key
     });
@@ -83,7 +79,7 @@ class EventCreate extends Component {
       type: "success",
       buttonText: "Nice"
     });
-    this.props.navigation.goBack();
+    this.props.navigation.navigate('CalendarWFooter');
   }
   
   openSearchModal() {

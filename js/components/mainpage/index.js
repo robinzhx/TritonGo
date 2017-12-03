@@ -47,7 +47,10 @@ class CalendarWFooter extends Component {
       content:'',
       arr: [],
       numEvent: 0,
-      numDaily: 0
+      numDaily: 0,
+      location: {
+        latitude: 37.621343, longitude: -122.378957
+      }
     };
   }
 
@@ -119,7 +122,12 @@ class CalendarWFooter extends Component {
   }
 
   editEvent(item) {
-    this.props.navigation.navigate('EventEdit',{id : item})
+    this.props.navigation.navigate('EventEdit',{eventItem: item})
+  }
+  
+  navigateMap(loc) {
+    this.setState({location: loc});
+    this.toggleTab3();
   }
   
   render() {
@@ -158,10 +166,10 @@ class CalendarWFooter extends Component {
               <TabDaily />
             </Tab>
             <Tab heading={ <TabHeading />}>
-              <TabCalendar editevent={(id) => this.editEvent(id)} eventNames= {this.state.arr}/>
+              <TabCalendar editevent={(id) => this.editEvent(id)} navigatemap={(location) => this.navigateMap(location)} eventNames= {this.state.arr}/>
             </Tab>
             <Tab heading={ <TabHeading />}>
-              <TabMap location={{latitude: 37.621343, longitude: -122.378957}}/>
+              <TabMap location={this.state.location}/>
             </Tab>
         </Tabs>
 
