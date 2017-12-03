@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import { KeyboardAvoidingView } from "react-native";
-=======
-
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 import {
   Container,
   Header,
@@ -15,7 +11,6 @@ import {
   Right,
   Body,
   Text,
-<<<<<<< HEAD
   Subtitle,
   Item,
   Input,
@@ -28,16 +23,10 @@ import {
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 
-=======
-  Subtitle
-} from "native-base";
-
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 import styles from "./styles";
 
 class EventCreate extends Component {
   // eslint-disable-line
-<<<<<<< HEAD
   constructor(props) {
     super(props);
     this.state = {
@@ -123,13 +112,10 @@ class EventCreate extends Component {
       public: !this.state.public,
     });
   }
-=======
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
 
   render() {
     return (
       <Container style={styles.container}>
-<<<<<<< HEAD
         <Header hasTabs
           style={{ backgroundColor: "#2874F0" }}
           androidStatusBarColor="#dc2015"
@@ -253,28 +239,6 @@ class EventCreate extends Component {
       </Container>
       
       
-=======
-        <Header hasSubtitle>
-          <Left>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Title</Title>
-            <Subtitle>Subtitle</Subtitle>
-          </Body>
-          <Right />
-
-        </Header>
-
-        <Content padder>
-          <Text>
-            Header with Title Subtitle
-          </Text>
-        </Content>
-      </Container>
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
     );
   }
 }

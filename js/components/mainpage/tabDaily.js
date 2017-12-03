@@ -81,15 +81,9 @@ class TabDaily extends Component {
     var s = this.state.content
     var array = this.state.arr
     array.sort(function(a,b) {
-<<<<<<< HEAD
       if (a['Date'] < b['Date'])
         return 1
       else if (a['Date'] > b['Date'])
-=======
-      if (a['Time'] < b['Time'])
-        return 1
-      else if (a['Time'] > b['Time'])
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
         return -1
       return 0
     });
@@ -218,14 +212,9 @@ class TabDaily extends Component {
                     <Left>
                       <Thumbnail source={event1logo} />
                       <Body>
-<<<<<<< HEAD
                         <Text>{item['Title']}</Text>
                         <Text note>{item['Date']}</Text>
                         <Text note>{item['StartTime']} - {item['EndTime']}</Text>
-=======
-                        <Text>{item['Name']}</Text>
-                        <Text note>{item['Time']}</Text>
->>>>>>> 284d737c5c87a6a9ee907046b3514472a9e867b4
                       </Body>
                     </Left>
                   </CardItem>
