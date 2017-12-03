@@ -53,11 +53,18 @@ class CalendarWFooter extends Component {
 
   allEvents(){
     firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).once('value', (snap) => {
-      var items = []
+      var itemsPri = []
       snap.forEach((child) => {
-        items.push(child.val().eventId);
+        itemsPri.push(child.val().eventId);
       });
-      this.setState({numEvent: items.length, numDaily: items.length})
+      this.setState({numEvent: itemsPri.length})
+    });
+    firebaseApp.database().ref().child('events').once('value', (snap) => {
+      var itemsPub = []
+      snap.forEach((child) => {
+        itemsPub.push(child.val());
+      });
+      this.setState({numDaily: itemsPub.length})
     });
   }
   
@@ -117,8 +124,12 @@ class CalendarWFooter extends Component {
             <Title style={{ color: "#FFF" }}>Main</Title>
           </Body>
           <Right>
-            <Button transparent><Icon style={{ color: "#FFF" }} name="search" /></Button>
-            <Button transparent><Icon style={{ color: "#FFF" }} name="more" /></Button>
+            <Button 
+              transparent
+              onPress={() => this.props.navigation.navigate("EventCreate")}
+            >
+              <Icon active style={{ color: "#FFF" }} name="add" />
+            </Button>
           </Right>
         </Header>
         
