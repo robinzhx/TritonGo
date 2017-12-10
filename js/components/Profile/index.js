@@ -16,7 +16,8 @@ import {
   View,
   Left,
   Right,
-  Body
+  Body,
+  Toast
 } from "native-base";
 import { Grid, Col } from "react-native-easy-grid";
 
@@ -37,13 +38,27 @@ class Profile extends Component {
       satSwitch: false,
       sunSwitch: false,
       Username: "",
-      email: "",
+      email: firebaseApp.auth().currentUser.email,
       password: "",
       offset: {
         x: 0,
         y: 0
       }
     };
+  }
+  
+  componentDidMount() {
+      setTimeout(() => {
+        Toast.show({
+          text: "Be aware! This page is under construction. Nothing should work except email display. " +
+                "Please go to other page and follow the test cases",
+          duration: 10000,
+          position: "top",
+          textStyle: { textAlign: "center" },
+          type: "warning",
+          buttonText: "Okay"
+        });
+      }, 300);
   }
 
   render() {
@@ -104,23 +119,23 @@ class Profile extends Component {
             <View style={styles.signupContainer}>
               <Item rounded style={styles.inputGrp}>
                 <Icon style={{ color: "#FFF" }} name="person" />
-                <Input
-                  placeholder="Robin"
+                <Input disabled
+                  placeholder="Alpha Tester"
                   placeholderTextColor="rgba(255,255,255,0.6)"
                   style={styles.input}
                 />
               </Item>
               <Item rounded style={styles.inputGrp}>
                 <Icon style={{ color: "#FFF" }} name="mail" />
-                <Input
-                  placeholder="zhx068@ucsd.edu"
+                <Input disabled
+                  placeholder={this.state.email}
                   placeholderTextColor="rgba(255,255,255,0.6)"
                   style={styles.input}
                 />
               </Item>
               <Item rounded style={styles.inputGrp}>
                 <Icon style={{ color: "#FFF" }} name="lock" />
-                <Input
+                <Input disabled
                   placeholder="*********"
                   placeholderTextColor="rgba(255,255,255,0.6)"
                   secureTextEntry

@@ -47,5 +47,14 @@ export default {
     marginTop:6,
     fontSize:13,
     color:"#808080"
+  },
+  itemButton1: {
+    height:30,
+    backgroundColor: "grey", 
+    margin: 2
+  },
+  itemButton2: {
+    height: 30,
+    margin: 2
   }
 };

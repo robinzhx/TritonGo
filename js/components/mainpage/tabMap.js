@@ -54,10 +54,10 @@ class TabMap extends Component {
 
   watchID: ?number = null
 
-  fetchData() {
+  fetchData(initP, desP) {
     var mode = 'driving'; // 'walking';
-    var origin = this.state.markerPosition.latitude + ',' + this.state.markerPosition.longitude;
-    var destination = this.state.destinationPosition.latitude + ',' + this.state.destinationPosition.longitude;
+    var origin = initP.latitude + ',' + initP.longitude;
+    var destination = desP.latitude + ',' + desP.longitude;
     var APIKEY = 'AIzaSyBjS7YuYNHvBis6N4gCEJKLauqnkSfAbUQ';
     var url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&language=en&origins=${origin}&destinations=${destination}&key=${APIKEY}&mode=${mode}`;
 
@@ -110,8 +110,8 @@ class TabMap extends Component {
       this.setState({initialPosition: lastRegion})
       this.setState({markerPosition: lastRegion})
 
-
-      this.fetchData();
+      
+      this.fetchData(this.state.markerPosition, this.state.destinationPosition);
     })
   }
 
@@ -122,6 +122,9 @@ class TabMap extends Component {
   componentWillReceiveProps (props){
     if(this.state.destinationPosition!=this.props.location) {
        this.fitPadding(this.props.location);
+    }
+    if(this.props.gotPosition) {
+       this.setState({gotPosition: true});
     }
     this.setState({destinationPosition: this.props.location});
     this.updateScale()

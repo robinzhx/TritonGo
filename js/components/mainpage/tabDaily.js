@@ -150,9 +150,12 @@ class TabDaily extends Component {
                   </CardItem>
                   <CardItem style={{ paddingVertical: 0 }}>
                     <Left>
-                      <Button transparent>
-                        <Icon name="logo-facebook" />
-                        <Text> See Detail</Text>
+                      <Button transparent 
+                        onPress={() => this.props.navigatemap(
+                          {latitude: item['Latitude'], longitude: item['Longitude'], gotPosition:true})}
+                      >
+                        <Icon active name="navigate" />
+                        <Text> Check Location</Text>
                       </Button>
                     </Left>
                     <Right>

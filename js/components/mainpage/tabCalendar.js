@@ -138,10 +138,11 @@ class TabCalendar extends Component {
           <Text style={styles.itemLocation}>{item.locationName}</Text>
         </Left>
         <Right>
-          <Button onPress={() => this.props.editevent(item)} >
-            <Icon active name="play"/>
+          <Button style={styles.itemButton1} onPress={() => this.props.editevent(item)} >
+            <Icon active name="settings"/>
           </Button>
-          <Button onPress={() => this.props.navigatemap({latitude: item.latitude, longitude: item.longitude})} >
+          <Button style={styles.itemButton2} 
+              onPress={() => this.props.navigatemap({latitude: item.latitude, longitude: item.longitude, gotPosition:true})} >
             <Icon active name="navigate"/>
           </Button>
         </Right>

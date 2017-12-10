@@ -49,6 +49,7 @@ class CalendarWFooter extends Component {
       arr: [],
       numEvent: 0,
       numDaily: 0,
+      gotPosition: false,
       location: {
         latitude: 37.621343, 
         longitude: -122.378957
@@ -130,7 +131,7 @@ class CalendarWFooter extends Component {
   }
   
   navigateMap(loc) {
-    this.setState({location: loc});
+    this.setState({location: loc, gotPosition: true});
     this.toggleTab3();
   }
   
@@ -172,7 +173,10 @@ class CalendarWFooter extends Component {
         <Tabs onChangeTab={({ i })=> this.toggleTab(i)} initialPage={1} ref={(tabView) => {this.tabView = tabView}}
           tabBarUnderlineStyle={{backgroundColor:"#FFF"}}>
             <Tab heading={ <TabHeading />}>
-              <TabDaily showdate={(date) => this.showDate(date)}/>
+              <TabDaily 
+                showdate={(date) => this.showDate(date)}
+                navigatemap={(location) => this.navigateMap(location)} 
+              />
             </Tab>
             <Tab heading={ <TabHeading />}>
               <TabCalendar 
@@ -182,7 +186,7 @@ class CalendarWFooter extends Component {
               />
             </Tab>
             <Tab heading={ <TabHeading />}>
-              <TabMap location={this.state.location}/>
+              <TabMap location={this.state.location} gotPosition={this.state.gotPosition}/>
             </Tab>
         </Tabs>
 

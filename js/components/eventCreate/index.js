@@ -50,36 +50,57 @@ class EventCreate extends Component {
   }
   
   createEvent() {
-    var eventID = firebaseApp.database().ref('events/').push({
-      Title: ""
-    });
-    firebaseApp.database().ref('events/' + eventID.key).set({
-      Title: this.state.title,
-      Date: this.state.date,
-      StartTime: this.state.startTime,
-      EndTime: this.state.endTime,
-      Description: this.state.description,
-      
-      LocationName : this.state.locationName,
-      Latitude: this.state.latitude,
-      Longitude: this.state.longitude,
-      
-      Public: this.state.public,
-      EventId: eventID.key
-    });
-    firebaseApp.database().ref('users_events/' + firebaseApp.auth().currentUser.uid).push({
-      eventId: eventID.key
-    });
-    
-    Toast.show({
-      text: "Create Event Successfully",
-      duration: 2500,
-      position: "top",
-      textStyle: { textAlign: "center" },
-      type: "success",
-      buttonText: "Nice"
-    });
-    this.props.navigation.navigate('CalendarWFooter');
+    if (!this.state.title || !this.state.date || !this.state.startTime || !this.state.endTime || 
+        !this.state.description || !this.state.locationName) {
+      Toast.show({
+        text: "All area needs to be filled!",
+        duration: 2500,
+        position: "top",
+        textStyle: { textAlign: "center" },
+        type: "warning",
+        buttonText: "Okay"
+      });
+    } else if (this.state.startTime > this.state.endTime) {
+      Toast.show({
+        text: "Start time needs to be set before end time!",
+        duration: 2500,
+        position: "top",
+        textStyle: { textAlign: "center" },
+        type: "warning",
+        buttonText: "Okay"
+      });
+    } else {
+      var eventID = firebaseApp.database().ref('events/').push({
+        Title: ""
+      });
+      firebaseApp.database().ref('events/' + eventID.key).set({
+        Title: this.state.title,
+        Date: this.state.date,
+        StartTime: this.state.startTime,
+        EndTime: this.state.endTime,
+        Description: this.state.description,
+
+        LocationName : this.state.locationName,
+        Latitude: this.state.latitude,
+        Longitude: this.state.longitude,
+
+        Public: this.state.public,
+        EventId: eventID.key
+      });
+      firebaseApp.database().ref('users_events/' + firebaseApp.auth().currentUser.uid).push({
+        eventId: eventID.key
+      });
+
+      Toast.show({
+        text: "Create Event Successfully",
+        duration: 2500,
+        position: "top",
+        textStyle: { textAlign: "center" },
+        type: "success",
+        buttonText: "Nice"
+      });
+      this.props.navigation.navigate('CalendarWFooter');
+    }
   }
   
   openSearchModal() {
