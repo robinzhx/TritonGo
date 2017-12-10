@@ -28,8 +28,7 @@ Password: 123456
 
 # Contacts for Technical Support
 Yu Zhong                            yuz871@eng.ucsd.edu                        Project Manager
-Zhuoqun Xu (Robin)                     
-zhx068@ucsd.edu                        		 UI/UX Design Lead
+Zhuoqun Xu (Robin)                  zhx068@ucsd.edu                            UI/UX Design Lead
 
 # Installation Instructions (For Testing Purposes)
 1.	Prepare a Mac OS X device with the latest version of XCode (9.1) installed.
@@ -40,7 +39,7 @@ zhx068@ucsd.edu                        		 UI/UX Design Lead
 6.	Now you have been directed to the target folder, type command: npm install, wait until the installation is completed.
 7.	Now, type the command 'react-native link', and wait until the linking process to finish.
 8.	After successful installation and linking, navigate to the ios folder using the following command: cd ios
-9.	Open the Xcode workspace using the command: open TritonGo.xcworkspace
+9.	Open the Xcode workspace using the command: open TritonGo.xcworkspace (NOTICE! It is not TritonGo.xcodeproj)
 10.	Xcode will then start up soon, if any message box pops up to remind the user of unverified source of the project, ignore it and continue opening the project.
 11.	Wait patiently for Xcode to process all the files, then hit the run button on the top left corner, or simply use the shortcut: Command+R.
 12.	Wait until the simulator starts up, and a virtual iPhone interface will pop up and the application will be installed on the second screen.
@@ -54,12 +53,17 @@ Simply press the TritonGo icon and the application is ready to run.
 1.	Event Creation Latency:
 After creating the events, the user might have to wait until the response to see the created event.
 
+
 # FAQ
 1. The application crashes, what should I do?
-Please use command + R to rerun the application. If problems persist, please contact technical support asap.
+Please use command + R to rerun the application. and also refer FAQ.6. If problems persist, please contact technical support asap.
 2. I forgot my password, how do I recover my account?
 	At the login page, hit the Forgot Password, enter the account email, and follow the instructions sent to the email to reset the password.
 3. How do I create an event?
 	Hit the icon “+” at the top right corner of the application.
 4. How do I navigate to the destination?
 	Hit the blue button accompanied with the created event, and then hit “Get Directions” and a navigation application will navigate you to the destination.  
+5. Date events are not updated, what should I do?
+	Make sure you connect to the network. Try to click the date button to see if it can update manually. User can select any date in calendar to maually update the different date events
+6. The application crash with a error "undefined ... 'RNGooglePlacesNative.openPlacePickerModal'".
+	Please look the installation instructions carefully. It requires to run with TritonGo.xcworkspace not the other way. The reason is because the Google API restriction.

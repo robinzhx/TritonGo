@@ -119,7 +119,16 @@ class TabDaily extends Component {
                 <Card style={styles.mb}>
                   <CardItem bordered>
                     <Left>
-                      <Thumbnail source={event1logo} />
+                      {item['Title'] == "VR Club GBM#2" ?
+                        <Thumbnail source={event2logo} />
+                        :
+                        (item['Title'] == "TritonGo Demo Day!" ?
+                          <Thumbnail source={event3logo} />
+                          :
+                          <Thumbnail source={event1logo} />
+                        )
+                      }
+
                       <Body>
                         <Text>{item['Title']}</Text>
                         <Text note>{item['Date']}</Text>
@@ -130,16 +139,42 @@ class TabDaily extends Component {
 
                   <CardItem>
                     <Body>
-                      <Image
-                        style={{
-                          alignSelf: "center",
-                          height: 150,
-                          resizeMode: "cover",
-                          width: deviceWidth / 1.18,
-                          marginVertical: 5
-                        }}
-                        source={event1}
-                      />
+                      {item['Title'] == "VR Club GBM#2" ?
+                        <Image
+                          style={{
+                            alignSelf: "center",
+                            height: 150,
+                            resizeMode: "cover",
+                            width: deviceWidth / 1.18,
+                            marginVertical: 5
+                          }}
+                          source={event2}
+                        />
+                        :
+                        (item['Title'] == "TritonGo Demo Day!" ?
+                          <Image
+                            style={{
+                              alignSelf: "center",
+                              height: 150,
+                              resizeMode: "cover",
+                              width: deviceWidth / 1.18,
+                              marginVertical: 5
+                            }}
+                            source={event3}
+                          />
+                          :
+                          <Image
+                            style={{
+                              alignSelf: "center",
+                              height: 150,
+                              resizeMode: "cover",
+                              width: deviceWidth / 1.18,
+                              marginVertical: 5
+                            }}
+                            source={event1}
+                          />
+                        )
+                      }
                       <Text>
                         {item['Description']}
                       </Text>
