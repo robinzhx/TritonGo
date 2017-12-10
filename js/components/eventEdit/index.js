@@ -17,7 +17,8 @@ import {
   View,
   Toast,
   ListItem,
-  CheckBox
+  CheckBox,
+  ActionSheet
 } from "native-base";
 
 import DateTimePicker from 'react-native-modal-datetime-picker';
@@ -25,6 +26,10 @@ import moment from 'moment';
 
 import styles from "./styles";
 import RNGooglePlaces from 'react-native-google-places';
+
+var DELETECONFIRMBUTTON = ["Delete", "Cancel"];
+var DESTRUCTIVE_INDEX = 0;
+var CANCEL_INDEX = 1;
 
 class EventEdit extends Component {
   // eslint-disable-line
@@ -34,14 +39,13 @@ class EventEdit extends Component {
       isDatePickerVisible: false,
       isStartTimePickerVisible: false,
       isEndTimePickerVisible: false,
+      
       public: false,
       title: "",
       date: "",
       startTime: "",
       endTime: "",
-      location:"",
       description: "",
-      type: "",
       locationName: "",
       eventId:"",
       latitude: "",
@@ -58,19 +62,24 @@ class EventEdit extends Component {
       endTime: this.props.navigation.state.params.eventItem['endTime'],
       locationName: this.props.navigation.state.params.eventItem['locationName'],
       description: this.props.navigation.state.params.eventItem['description'],
-      eventId : this.props.navigation.state.params.eventItem['eventId']
+      eventId : this.props.navigation.state.params.eventItem['eventId'],
+      latitude: this.props.navigation.state.params.eventItem['latitude'],
+      longitude: this.props.navigation.state.params.eventItem['longitude']
     });
   }
   
   editEvent() {
-    firebaseApp.database().ref('events/' + this.state.eventID).set({
+    firebaseApp.database().ref('events/' + this.state.eventId).set({
       Title: this.state.title,
       Date: this.state.date,
       StartTime: this.state.startTime,
       EndTime: this.state.endTime,
-      Location : this.state.location,
       Description: this.state.description,
-      Public: this.state.public
+      Public: this.state.public,
+      LocationName: this.state.locationName,
+      Latitude: this.state.latitude,
+      Longitude: this.state.longitude,
+      EventId : this.state.eventId
     });
     Toast.show({
       text: "Edit Event Successfully",
@@ -89,7 +98,7 @@ class EventEdit extends Component {
       snapshot.ref.remove()
     });
     Toast.show({
-      text: "Create Event Successfully",
+      text: "Delete Event Successfully",
       duration: 2500,
       position: "top",
       textStyle: { textAlign: "center" },
@@ -164,7 +173,7 @@ class EventEdit extends Component {
             </Button>
           </Left>
           <Body>
-            <Icon active style={{ color: "#fff" }} name="bulb" />
+            <Icon active style={{ color: "#fff" }} name="attach" />
           </Body>
           <Right />
         </Header>
@@ -175,6 +184,7 @@ class EventEdit extends Component {
               placeholder="Enter Your Title" 
               placeholderTextColor="rgba(255,255,255,0.8)" 
               selectionColor={"#fff"}
+              value={this.state.title}
               onChangeText={(text) => this.setState({title: text})}
               blurOnSubmit={true}
             />
@@ -189,17 +199,11 @@ class EventEdit extends Component {
             <Icon style={{marginLeft: 5, marginTop: 10}} name="paper" />
             <Input style={{marginBottom: 15, marginTop: 7}}
               placeholder="Description" blurOnSubmit={true} 
+              value={this.state.description}
               multiline={true} onChangeText={(text) => this.setState({description: text})}
             />
           </Item>
           </KeyboardAvoidingView>
-            
-          {/*<Item regular style={{marginBottom: 10}} >
-            <Icon style={{marginLeft: 5}} name="map" />
-            <Input placeholder="Location" blurOnSubmit={true} 
-              onChangeText={(text) => this.setState({location: text})}
-            />
-          </Item>*/}
           
           <View style={{ marginBottom: 10, marginTop: 5, flexDirection: "row" }}>
             <Button bordered
@@ -259,18 +263,24 @@ class EventEdit extends Component {
           
           <View style={{ marginBottom: 10, marginTop: 5, flexDirection: "row" }}>
             <Button rounded style={styles.submitBtn}
-              onPress={() => Toast.show({
-      text: "" + this.props.navigation.state.params.eventItem["title"],
-      duration: 2500,
-      position: "top",
-      textStyle: { textAlign: "center" },
-      type: "success"
-    })}>
+              onPress={() => this.editEvent()}>
               <Text>Submit</Text>
             </Button>
             <Button rounded style={styles.deleteBtn} danger
-              onPress={() => this.deleteEvent(this.props.navigation.state.params.eventItem["eventId"])}>
+              onPress={() => ActionSheet.show(
+                {
+                  options: DELETECONFIRMBUTTON,
+                  cancelButtonIndex: CANCEL_INDEX,
+                  destructiveButtonIndex: DESTRUCTIVE_INDEX,
+                  title: "Are you sure to delete this event?"
+                },
+                buttonIndex => {
+                  (buttonIndex === DESTRUCTIVE_INDEX) ? this.deleteEvent(this.state.eventId) : null
+                }
+              )}
+            >
               <Text>Delete</Text>
+              
             </Button>
           </View>
         </Content>

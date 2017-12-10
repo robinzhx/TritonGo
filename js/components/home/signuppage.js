@@ -30,33 +30,33 @@ class SignUpPags extends Component {
   }
   
   signup() {
-      firebaseApp.auth().createUserWithEmailAndPassword(
-        this.state.email,
-        this.state.password).then(() => {
-          Toast.show({
-            text: "Account created! Now you can login :D",
-            duration: 2500,
-            position: "top",
-            textStyle: { textAlign: "center" },
-            type: "success"
-          });
-          this.props.navigation.goBack();
-      }).catch((error) => {
-         Toast.show({
-            text: error.message,
-            duration: 2500,
-            position: "top",
-            textStyle: { textAlign: "center" },
-            type: "danger"
-          });
+    firebaseApp.auth().createUserWithEmailAndPassword(
+      this.state.email,
+      this.state.password).then(() => {
+        Toast.show({
+          text: "Account created! Now you can login :D",
+          duration: 2500,
+          position: "top",
+          textStyle: { textAlign: "center" },
+          type: "success"
+        });
+        this.props.navigation.goBack();
+    }).catch((error) => {
+      Toast.show({
+        text: error.message,
+        duration: 2500,
+        position: "top",
+        textStyle: { textAlign: "center" },
+        type: "danger"
       });
-    }
+    });
+  }
 
   render() {
     return (
       <Container>
         <Image
-          source={require("../../../img/launchscreen-bg.png")}
+          source={require("../../../img/signup-bg.png")}
           style={styles.background}
         >
           <Content padder>

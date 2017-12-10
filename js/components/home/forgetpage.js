@@ -29,7 +29,7 @@ class ForgotPage extends Component {
         ).then(() =>
     {
       Toast.show({
-        text: "Please check your mailbox",
+        text: "Please check your mailbox for recovery",
         duration: 2500,
         position: "top",
         textStyle: { textAlign: "center" },
@@ -54,7 +54,7 @@ class ForgotPage extends Component {
       <Container>
         <StatusBar barStyle="light-content" />
         <Image
-          source={require("../../../img/launchscreen-bg.png")}
+          source={require("../../../img/forget-bg.png")}
           style={styles.background}
         >
           <Content contentOffset={this.state.offset}>

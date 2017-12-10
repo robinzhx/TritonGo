@@ -14,14 +14,6 @@ export default {
     marginBottom: 15
   },
   item: {
-    backgroundColor: 'white',
-    flex: 1,
-    borderRadius: 5,
-    padding: 10,
-    marginRight: 10,
-    marginTop: 17
-  },
-  item: {
     flexDirection: "row", justifyContent: "space-between",
     backgroundColor: 'white',
     flex: 1,
@@ -39,5 +31,21 @@ export default {
     borderTopColor: 'grey',
     borderTopWidth: 1,
     opacity: 0.1
+  },
+  leftItem: {
+    flex:2,
+    marginLeft:5
+  },
+  itemTime: {
+    fontSize:14,
+    marginBottom:8
+  },
+  itemTitle: {
+    fontSize:18,
+  },
+  itemLocation: {
+    marginTop:6,
+    fontSize:13,
+    color:"#808080"
   }
 };

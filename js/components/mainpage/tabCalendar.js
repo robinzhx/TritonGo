@@ -6,7 +6,9 @@ import {
   Right,
   Button,
   Icon,
-  Spinner
+  Spinner,
+  Subtitle,
+  Title
 } from 'native-base';
 
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
@@ -40,6 +42,7 @@ class TabCalendar extends Component {
         <Spinner color="grey" style={{ margin: 20 }}/>
         :
         <Agenda
+          selected={(this.props.showDate)}
           items={this.state.items}
           loadItemsForMonth={this.loadItems.bind(this)}
           renderItem={this.renderItem.bind(this)}
@@ -62,22 +65,19 @@ class TabCalendar extends Component {
             array.push(snapshot.val())
         });
       }
+      
+      // sorting array
+      array.sort(function(a,b) {
+        if (a['Date'] < b['Date'])
+          return -1
+        else if (a['Date'] > b['Date'])
+          return 1
+        return 0
+      });
       this.setState({arr: array})
     });
   }
-  
-  display() {
-    var array = this.state.arr
-    array.sort(function(a,b) {
-    if (a['Date'] < b['Date'])
-      return -1
-    else if (a['Date'] > b['Date'])
-      return 1
-    return 0
-    });
-    this.setState({arr:array})
-  }
-  
+
   loadItems(day) {
     if (!day) return;
     setTimeout(() => {
@@ -88,26 +88,35 @@ class TabCalendar extends Component {
         const strTime = this.timeToString(time);
         if (!this.state.items[strTime]) {
           this.state.items[strTime] = [];
-          /*const numItems = Math.floor(Math.random() * 6);
-          for (let j = 0; j < numItems; j++) {
-          }*/
         }
       }
       for (var j = 0; j < this.state.arr.length; j++) {
         const eventTime = this.state.arr[j]['Date'];
-        this.state.items[eventTime] = [];
-        this.state.items[eventTime].push({
-          startTime: this.state.arr[j]['StartTime'],
-          endTime: this.state.arr[j]['EndTime'],
-          date: this.state.arr[j]['Date'],
-          title: this.state.arr[j]['Title'],
-          description: this.state.arr[j]['Description'],
-          locationName: this.state.arr[j]['LocationName'],
-          latitude: this.state.arr[j]['Latitude'],
-          longitude: this.state.arr[j]['Longitude'],
-          eventId: this.state.arr[j]['EventId'],
-          height: Math.max(50, Math.floor(Math.random() * 100))
-        });
+        var duplicate = false;
+        if (!this.state.items[eventTime]) {
+          this.state.items[eventTime] = [];
+        } 
+        for (var k = 0; k < this.state.items[eventTime].length; k++) {
+          if (this.state.items[eventTime][k].eventId === this.state.arr[j]['EventId']) {
+            duplicate = true;
+            break;
+          }
+        }
+        if (!duplicate) {
+          this.state.items[eventTime].push({
+            startTime: this.state.arr[j]['StartTime'],
+            endTime: this.state.arr[j]['EndTime'],
+            date: this.state.arr[j]['Date'],
+            title: this.state.arr[j]['Title'],
+            description: this.state.arr[j]['Description'],
+            locationName: this.state.arr[j]['LocationName'],
+            latitude: this.state.arr[j]['Latitude'],
+            longitude: this.state.arr[j]['Longitude'],
+            eventId: this.state.arr[j]['EventId'],
+            public: this.state.arr[j]['Public'],
+            height: Math.max(50, Math.floor(Math.random() * 100))
+          });
+        }
       }
       
       //console.log(this.state.items);
@@ -123,18 +132,18 @@ class TabCalendar extends Component {
   renderItem(item) {
     return (
       <View style={styles.item}>
-        <Left style={{flex:2}}>
-          <Text>{item.startTime} - {item.endTime}</Text>
-          <Text>{item.title}</Text>
-          <Text>{item.locationName}</Text>
+        <Left style={styles.leftItem}>
+          <Text style={styles.itemTime}>{item.startTime} - {item.endTime}</Text>
+          <Text style={styles.itemTitle}>{item.title}</Text>
+          <Text style={styles.itemLocation}>{item.locationName}</Text>
         </Left>
         <Right>
+          <Button onPress={() => this.props.editevent(item)} >
+            <Icon active name="play"/>
+          </Button>
           <Button onPress={() => this.props.navigatemap({latitude: item.latitude, longitude: item.longitude})} >
             <Icon active name="navigate"/>
           </Button>
-          {/*<Button onPress={() => this.props.editevent(item)} >
-            <Icon active name="play"/>
-          </Button>*/}
         </Right>
       </View>
     );
@@ -147,7 +156,7 @@ class TabCalendar extends Component {
   }
 
   rowHasChanged(r1, r2) {
-    return r1.title !== r2.title;
+    return r1 !== r2;
   }
 
   timeToString(time) {

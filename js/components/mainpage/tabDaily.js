@@ -15,7 +15,8 @@ import {
   Icon,
   Spinner,
   List,
-  ListItem
+  ListItem,
+  Toast
 } from 'native-base';
 
 import styles from "./styles";
@@ -45,26 +46,6 @@ class TabDaily extends Component {
       isLoading: true
     }
   }
-
-//   allEvents(){
-//     firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).once('value', (snap) => {
-//       var items = []
-//       snap.forEach((child) => {
-//         items.push(child.val().eventId);
-//       });
-//       var s = this.state.content
-//       s = s + "There are " + items.length + " events!\n"
-//       this.setState({content : s})
-//       for (var j = 0; j < items.length; j++) {
-//         var ref = firebaseApp.database().ref('events/' + items[j]);
-//         ref.once('value').then((snapshot) => {
-//           var array = this.state.arr
-//           array.push(snapshot.val())
-//           this.setState({arr: array})
-//         });
-//       }
-//     });
-//   }
   
   loadPublic(){
     firebaseApp.database().ref().child('events').on('value', (snap) => {
@@ -73,39 +54,56 @@ class TabDaily extends Component {
         if (child.val()['Public'])
           items.push(child.val());
       });
+      items.sort(function(a,b) {
+        if (a['Date'] < b['Date'])
+          return 1
+        else if (a['Date'] > b['Date'])
+          return -1
+        return 0
+      });
       this.setState({arr: items})
     });
-  }
-  
-  display() {
-    var s = this.state.content
-    var array = this.state.arr
-    array.sort(function(a,b) {
-      if (a['Date'] < b['Date'])
-        return 1
-      else if (a['Date'] > b['Date'])
-        return -1
-      return 0
-    });
-    for (var i = 0; i < array.length; i++) {
-      for (var j in array[i]) {
-        s += j + " : " + array[i][j] + "\n"
-      }
-    }
-    this.setState({content:s, arr: array})
   }
   
   componentDidMount() {
       this.loadPublic()
       
       setTimeout(() => {
-        this.display();
         this.setState({ isLoading: false });
       }, 900);
   }
   
-  addToCalendar(id) {
-        firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid).push({eventId: id})
+  addToCalendar(id, date) {
+    let firbaseObject = firebaseApp.database().ref().child('users_events').child(firebaseApp.auth().currentUser.uid);
+    var duplicate = false;
+    firbaseObject.on('value', (snap) => {
+      snap.forEach((child) => {
+        if (id === child.val().eventId) {
+          duplicate = true
+        }
+      });
+    });
+    if (!duplicate) {
+      firbaseObject.push({eventId: id})
+      Toast.show({
+        text: "Add Event Successfully",
+        duration: 2500,
+        position: "top",
+        textStyle: { textAlign: "center" },
+        type: "success",
+        buttonText: "Nice"
+      });
+    } else {
+      Toast.show({
+        text: "You already has this event at " + date + "!",
+        duration: 2500,
+        position: "top",
+        textStyle: { textAlign: "center" },
+        type: "warning",
+        buttonText: "Okay"
+      });
+      this.props.showdate(date);
+    }
   }
   
   render() {
@@ -145,6 +143,9 @@ class TabDaily extends Component {
                       <Text>
                         {item['Description']}
                       </Text>
+                      <Text style={styles.itemLocation}>
+                        Location: {item['LocationName']}
+                      </Text>
                     </Body>
                   </CardItem>
                   <CardItem style={{ paddingVertical: 0 }}>
@@ -156,7 +157,7 @@ class TabDaily extends Component {
                     </Left>
                     <Right>
                       <Button transparent
-                        onPress={()=> this.addToCalendar(item['EventId'])}>
+                        onPress={()=> this.addToCalendar(item['EventId'], item['Date'])}>
                         <Text>Add to Calendar </Text>
                         <Icon active name="play" />
                       </Button>

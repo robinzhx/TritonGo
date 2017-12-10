@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Text,
   View,
-  Dimensions,
-  Button
+  Dimensions
 } from 'react-native';
+import {Button, Icon, Text} from 'native-base';
 
 import MapLinking from 'react-native-use-external-maps';
 
@@ -33,15 +32,10 @@ export default class LinkMap extends Component {
  
   render() {
     return (
-      <View style={styles.container}>
-        <Button onPress={this.handleLinkMap.bind(this)} title="Get Directions" />
-      </View>
+        <Button onPress={this.handleLinkMap.bind(this)} style={{margin: 10}}>
+          <Icon active name="navigate" />
+          <Text style={{color: '#FFF'}} >Get Direction</Text>
+        </Button>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container:{
-    padding: 20  
-  }
-});

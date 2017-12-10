@@ -8,7 +8,8 @@ import {
   Button,
   Item,
   Icon,
-  Input
+  Input,
+  Fab
 } from 'native-base';
 import MapView from 'react-native-maps';
 import getDirections from 'react-native-google-maps-directions';
@@ -30,6 +31,7 @@ class TabMap extends Component {
     super(props);
 
     this.state = {
+      gotPosition: false,
       initialPosition: {
         latitude: 0,
         longitude: 0,
@@ -54,7 +56,7 @@ class TabMap extends Component {
 
   fetchData() {
     var mode = 'driving'; // 'walking';
-    var origin = this.state.initialPosition.latitude + ',' + this.state.initialPosition.longitude;
+    var origin = this.state.markerPosition.latitude + ',' + this.state.markerPosition.longitude;
     var destination = this.state.destinationPosition.latitude + ',' + this.state.destinationPosition.longitude;
     var APIKEY = 'AIzaSyBjS7YuYNHvBis6N4gCEJKLauqnkSfAbUQ';
     var url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&language=en&origins=${origin}&destinations=${destination}&key=${APIKEY}&mode=${mode}`;
@@ -86,8 +88,8 @@ class TabMap extends Component {
     (error) => alert(JSON.stringify(error)),
     {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000})
     this.updateScale();
-    
   }
+
   updateScale() 
   {
       this.watchID = navigator.geolocation.watchPosition((position) => {
@@ -117,22 +119,37 @@ class TabMap extends Component {
     navigator.geolocation.clearWatch(this.watchID)
   }
 
+  componentWillReceiveProps (props){
+    if(this.state.destinationPosition!=this.props.location) {
+       this.fitPadding(this.props.location);
+    }
+    this.setState({destinationPosition: this.props.location});
+    this.updateScale()
+  }
+
+  fitPadding(pos) {
+    this.map.fitToCoordinates([this.state.markerPosition, pos], {
+      edgePadding: { top: 100, right: 100, bottom: 100, left: 100 },
+    });
+  }
+
   onRegionChange(region) {
     this.setState({initialPosition: region});
   }
 
   openSearchModal() {
 
-    RNGooglePlaces.openPlacePickerModal(
-  )
-    .then((place) => {
-    this.setState({whereiam: place,
-                  destinationPosition: {
-                    latitude: place.latitude,
-                    longitude: place.longitude
-                  }
+    RNGooglePlaces.openPlacePickerModal()
+      .then((place) => {
+        this.setState({whereiam: place,
+                       destinationPosition: {
+                         latitude: place.latitude,
+                         longitude: place.longitude
+                       },
+                       gotPosition: true
                   });
     this.updateScale();
+    this.fitPadding(place);
     console.log(place);
     
     //connect to the database
@@ -153,12 +170,14 @@ class TabMap extends Component {
     return (
       <View style={styles.container}>
         <MapView
+          ref={ref => { this.map = ref; }}
           style={styles.map}
           region={this.state.initialPosition}
           onRegionChange={this.onRegionChange.bind(this)}
           zoomEnabled = {true}
           rotateEnabled= {false}
           scrollEnabled = {false}
+          /*onRegionChangeComplete={() => this.marker.showCallout()}*/
           >
           <MapView.Marker
             coordinate={this.state.markerPosition}>
@@ -166,10 +185,12 @@ class TabMap extends Component {
                 <View style={styles.marker} />
               </View>
           </MapView.Marker>
-          <MapView.Marker
+          {this.state.gotPosition && <MapView.Marker 
+            /*ref={marker => (this.marker = marker)}*/
             coordinate={this.state.destinationPosition}
             title={displayInfo}>
           </MapView.Marker>
+          }
         </MapView>
         <View style={{padding: 10, flexDirection: 'row'}}>
           <Button rounded style={{ backgroundColor: "rgba(0,0,0,0.4)", flex: 1, justifyContent: 'flex-start'}} 
@@ -178,7 +199,16 @@ class TabMap extends Component {
             <Text>Search</Text>
           </Button>
         </View>
-        <LinkMap start={this.state.initialPosition} end={this.state.destinationPosition}/>
+        <View style={{padding: 10, flexDirection: 'row'}}>
+          {this.state.gotPosition && 
+            <LinkMap start={this.state.initialPosition} end={this.state.destinationPosition}/>
+          }
+          <Button style={{ backgroundColor: "grey", margin: 10}}
+            onPress={() => this.fitPadding(this.state.markerPosition)}>
+            <Icon active name="home" />
+            <Text style={{color: '#FFF'}} >Restore View</Text>
+          </Button>
+        </View>
       </View>
     );
   }
@@ -210,7 +240,7 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center'
   },
   map: {

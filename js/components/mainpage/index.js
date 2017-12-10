@@ -35,6 +35,7 @@ import TabMap from './tabMap';
 
 import getTheme from '../../../theme/components';
 
+import moment from 'moment';
 
 class CalendarWFooter extends Component {
   
@@ -49,8 +50,11 @@ class CalendarWFooter extends Component {
       numEvent: 0,
       numDaily: 0,
       location: {
-        latitude: 37.621343, longitude: -122.378957
-      }
+        latitude: 37.621343, 
+        longitude: -122.378957
+      },
+      dateToShow: moment().format('YYYY-MM-DD'),
+      refreshing: false
     };
   }
 
@@ -130,6 +134,11 @@ class CalendarWFooter extends Component {
     this.toggleTab3();
   }
   
+  showDate(date) {
+    this.setState({dateToShow: date});
+    this.toggleTab2();
+  }
+  
   render() {
     return (
       <StyleProvider style={getTheme()}>
@@ -163,10 +172,14 @@ class CalendarWFooter extends Component {
         <Tabs onChangeTab={({ i })=> this.toggleTab(i)} initialPage={1} ref={(tabView) => {this.tabView = tabView}}
           tabBarUnderlineStyle={{backgroundColor:"#FFF"}}>
             <Tab heading={ <TabHeading />}>
-              <TabDaily />
+              <TabDaily showdate={(date) => this.showDate(date)}/>
             </Tab>
             <Tab heading={ <TabHeading />}>
-              <TabCalendar editevent={(id) => this.editEvent(id)} navigatemap={(location) => this.navigateMap(location)} eventNames= {this.state.arr}/>
+              <TabCalendar 
+                showDate={this.state.dateToShow} 
+                editevent={(id) => this.editEvent(id)} 
+                navigatemap={(location) => this.navigateMap(location)} 
+              />
             </Tab>
             <Tab heading={ <TabHeading />}>
               <TabMap location={this.state.location}/>
