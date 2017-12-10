@@ -56,7 +56,7 @@ After creating the events, the user might have to wait until the response to see
 
 # FAQ
 1. The application crashes, what should I do?
-Please use command + R to rerun the application. and also refer FAQ.6. If problems persist, please contact technical support asap.
+Please use command + R to rerun the application. and also refer FAQ.6 or 7. If problems persist, please contact technical support asap.
 2. I forgot my password, how do I recover my account?
 	At the login page, hit the Forgot Password, enter the account email, and follow the instructions sent to the email to reset the password.
 3. How do I create an event?
@@ -67,3 +67,5 @@ Please use command + R to rerun the application. and also refer FAQ.6. If proble
 	Make sure you connect to the network. Try to click the date button to see if it can update manually. User can select any date in calendar to maually update the different date events
 6. The application crash with a error "undefined ... 'RNGooglePlacesNative.openPlacePickerModal'".
 	Please look the installation instructions carefully. It requires to run with TritonGo.xcworkspace not the other way. The reason is because the Google API restriction.
+7. The application crash with a error "No bundler...".
+        Please notify that we assume user does not run any other react-native application in the back. This error is mostly the react-native packeger was not enable because either there is already existed packeger running (for other app) or either it does not run at all. Make sure that when you hit the run or use command+R to boot up the application, you should see a terminal automatically pop up saying "Scanning 604 folders for symlinks in .../TritonGo/node_modules" and the end show a line "Bundling `index.ios.js`  100.0% (960/960), done." If the error persist, feel free to call the technical support asap.
