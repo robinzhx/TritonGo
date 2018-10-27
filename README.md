@@ -1,7 +1,7 @@
 # TritonGo
 @ 5th December 2017 @
 
-Demo: https://www.youtube.com/watch?v=g-3NB_9n02o&t=1s
+Demo: https://www.youtube.com/watch?v=g-3NB_9n02o
 
 # Team TritonGo Member:
 Rica Chang, Xinmeng Li, Bodong Wang, Zhuoqun Xu, Ruochao Yan, Bohan Zhang, Bowen Zhang, Yu Zhong
