@@ -1,6 +1,8 @@
 # TritonGo
 @ 5th December 2017 @
 
+Demo: https://www.youtube.com/watch?v=g-3NB_9n02o&t=1s
+
 # Team TritonGo Member:
 Rica Chang, Xinmeng Li, Bodong Wang, Zhuoqun Xu, Ruochao Yan, Bohan Zhang, Bowen Zhang, Yu Zhong
 
@@ -27,8 +29,8 @@ Password: 123456
 ●	The system should have at least 314.5 MB of space to install the application.
 
 # Contacts for Technical Support
-Yu Zhong                            yuz871@eng.ucsd.edu                        Project Manager
-Zhuoqun Xu (Robin)                  zhx068@ucsd.edu                            UI/UX Design Lead
+Yu Zhong				yuz871@eng.ucsd.edu
+Zhuoqun (Robin) Xu			zhx068@ucsd.edu
 
 # Installation Instructions (For Testing Purposes)
 1.	Prepare a Mac OS X device with the latest version of XCode (9.1) installed.
